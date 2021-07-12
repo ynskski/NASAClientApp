@@ -17,6 +17,7 @@
 		021A57E6269C17A400A55AC1 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E5269C17A400A55AC1 /* Secret.swift */; };
 		021A57E8269C1E0900A55AC1 /* APODImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E7269C1E0900A55AC1 /* APODImage.swift */; };
 		021A57EA269C205C00A55AC1 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E9269C205C00A55AC1 /* APIError.swift */; };
+		021A57ED269C308900A55AC1 /* APOTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57EC269C308900A55AC1 /* APOTodayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		021A57E5269C17A400A55AC1 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		021A57E7269C1E0900A55AC1 /* APODImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODImage.swift; sourceTree = "<group>"; };
 		021A57E9269C205C00A55AC1 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		021A57EC269C308900A55AC1 /* APOTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTodayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		021A57B9269C141100A55AC1 /* NASAClient */ = {
 			isa = PBXGroup;
 			children = (
+				021A57EB269C305F00A55AC1 /* Today */,
 				021A57E2269C153300A55AC1 /* API */,
 				021A57BA269C141100A55AC1 /* NASAClientApp.swift */,
 				021A57BC269C141100A55AC1 /* ContentView.swift */,
@@ -142,6 +145,14 @@
 				021A57E9269C205C00A55AC1 /* APIError.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		021A57EB269C305F00A55AC1 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				021A57EC269C308900A55AC1 /* APOTodayView.swift */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				021A57E8269C1E0900A55AC1 /* APODImage.swift in Sources */,
+				021A57ED269C308900A55AC1 /* APOTodayView.swift in Sources */,
 				021A57BD269C141100A55AC1 /* ContentView.swift in Sources */,
 				021A57E6269C17A400A55AC1 /* Secret.swift in Sources */,
 				021A57BB269C141100A55AC1 /* NASAClientApp.swift in Sources */,
