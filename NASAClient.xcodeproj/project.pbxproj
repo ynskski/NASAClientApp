@@ -13,6 +13,7 @@
 		021A57C2269C141200A55AC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021A57C1269C141200A55AC1 /* Preview Assets.xcassets */; };
 		021A57CC269C141200A55AC1 /* NASAClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57CB269C141200A55AC1 /* NASAClientTests.swift */; };
 		021A57D6269C141200A55AC1 /* NASAClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57D5269C141200A55AC1 /* NASAClientUITests.swift */; };
+		021A57E4269C155100A55AC1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E3269C155100A55AC1 /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		021A57CB269C141200A55AC1 /* NASAClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAClientTests.swift; sourceTree = "<group>"; };
 		021A57D1269C141200A55AC1 /* NASAClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NASAClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		021A57D5269C141200A55AC1 /* NASAClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAClientUITests.swift; sourceTree = "<group>"; };
+		021A57E3269C155100A55AC1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		021A57B9269C141100A55AC1 /* NASAClient */ = {
 			isa = PBXGroup;
 			children = (
+				021A57E2269C153300A55AC1 /* API */,
 				021A57BA269C141100A55AC1 /* NASAClientApp.swift */,
 				021A57BC269C141100A55AC1 /* ContentView.swift */,
 				021A57BE269C141200A55AC1 /* Assets.xcassets */,
@@ -122,6 +125,14 @@
 				021A57D5269C141200A55AC1 /* NASAClientUITests.swift */,
 			);
 			path = NASAClientUITests;
+			sourceTree = "<group>";
+		};
+		021A57E2269C153300A55AC1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				021A57E3269C155100A55AC1 /* APIClient.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 			files = (
 				021A57BD269C141100A55AC1 /* ContentView.swift in Sources */,
 				021A57BB269C141100A55AC1 /* NASAClientApp.swift in Sources */,
+				021A57E4269C155100A55AC1 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
