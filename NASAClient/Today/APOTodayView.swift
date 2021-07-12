@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct APOTodayView: View {
-    let picture: APODImage
+    let picture: AstronomyPicture
     
     var body: some View {
         List {

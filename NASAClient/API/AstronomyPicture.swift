@@ -1,6 +1,6 @@
 import Foundation
 
-struct APODImage: Decodable {
+struct AstronomyPicture: Decodable {
     var copyright: String
     var date: String
     var explanation: String

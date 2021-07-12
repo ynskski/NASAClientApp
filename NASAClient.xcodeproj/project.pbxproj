@@ -15,7 +15,7 @@
 		021A57D6269C141200A55AC1 /* NASAClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57D5269C141200A55AC1 /* NASAClientUITests.swift */; };
 		021A57E4269C155100A55AC1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E3269C155100A55AC1 /* APIClient.swift */; };
 		021A57E6269C17A400A55AC1 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E5269C17A400A55AC1 /* Secret.swift */; };
-		021A57E8269C1E0900A55AC1 /* APODImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E7269C1E0900A55AC1 /* APODImage.swift */; };
+		021A57E8269C1E0900A55AC1 /* AstronomyPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */; };
 		021A57EA269C205C00A55AC1 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E9269C205C00A55AC1 /* APIError.swift */; };
 		021A57ED269C308900A55AC1 /* APOTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57EC269C308900A55AC1 /* APOTodayView.swift */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,7 @@
 		021A57D5269C141200A55AC1 /* NASAClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAClientUITests.swift; sourceTree = "<group>"; };
 		021A57E3269C155100A55AC1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		021A57E5269C17A400A55AC1 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
-		021A57E7269C1E0900A55AC1 /* APODImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODImage.swift; sourceTree = "<group>"; };
+		021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyPicture.swift; sourceTree = "<group>"; };
 		021A57E9269C205C00A55AC1 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		021A57EC269C308900A55AC1 /* APOTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTodayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,7 +141,7 @@
 			children = (
 				021A57E3269C155100A55AC1 /* APIClient.swift */,
 				021A57E5269C17A400A55AC1 /* Secret.swift */,
-				021A57E7269C1E0900A55AC1 /* APODImage.swift */,
+				021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */,
 				021A57E9269C205C00A55AC1 /* APIError.swift */,
 			);
 			path = API;
@@ -285,7 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				021A57E8269C1E0900A55AC1 /* APODImage.swift in Sources */,
+				021A57E8269C1E0900A55AC1 /* AstronomyPicture.swift in Sources */,
 				021A57ED269C308900A55AC1 /* APOTodayView.swift in Sources */,
 				021A57BD269C141100A55AC1 /* ContentView.swift in Sources */,
 				021A57E6269C17A400A55AC1 /* Secret.swift in Sources */,

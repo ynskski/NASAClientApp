@@ -19,7 +19,7 @@ final class APIClient {
         self.init(session: session)
     }
     
-    func apod() -> AnyPublisher<APODImage, Error> {
+    func apod() -> AnyPublisher<AstronomyPicture, Error> {
         var urlComponents = URLComponents(string: "\(baseURL)/planetary/apod")!
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: API_KEY)
@@ -31,7 +31,7 @@ final class APIClient {
                 try throwErrorForResponse(response)
                 return data
             }
-            .decode(type: APODImage.self, decoder: JSONDecoder())
+            .decode(type: AstronomyPicture.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
 }
