@@ -24,8 +24,10 @@ struct APOTodayView: View {
                         Text(viewStore.picture?.explanation ?? "")
                     }
                     
-                    Section(header: Text("copyright: \(viewStore.picture?.copyright ?? "")")) {
-                        EmptyView()
+                    if let copyright = viewStore.picture?.copyright {
+                        Section(header: Text("copyright: \(copyright)")) {
+                            EmptyView()
+                        }
                     }
                 }
                 .onAppear {
