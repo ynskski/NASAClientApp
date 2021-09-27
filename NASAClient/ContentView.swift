@@ -9,8 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        APOTodayView(
+            store: .init(
+                initialState: .init(),
+                reducer: APOTodayReducer,
+                environment: APODTodayEnvironment(
+                    client: .init(session: .shared),
+                    mainQueue: .main
+                )
+            )
+        )
     }
 }
 
