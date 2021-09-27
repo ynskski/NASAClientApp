@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import ComposableArchitecture
 
 final class APIClient {
     private let session: URLSession
@@ -19,20 +20,20 @@ final class APIClient {
         self.init(session: session)
     }
     
-    func apod() -> AnyPublisher<AstronomyPicture, Error> {
+    func apod() -> Effect<AstronomyPicture, APIClientError> {
         var urlComponents = URLComponents(string: "\(baseURL)/planetary/apod")!
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: API_KEY)
         ]
         
         return session.dataTaskPublisher(for: urlComponents.url!)
-            .mapError{ $0 as Error }
             .tryMap { data, response in
                 try throwErrorForResponse(response)
                 return data
             }
             .decode(type: AstronomyPicture.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
+            .mapError(APIClientError.init)
+            .eraseToEffect()
     }
 }
 
