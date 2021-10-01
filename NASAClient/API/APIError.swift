@@ -10,3 +10,11 @@ enum APIError: LocalizedError {
         }
     }
 }
+
+func throwErrorForResponse(_ response: URLResponse) throws {
+    if let response = response as? HTTPURLResponse {
+        if !(200..<300).contains(response.statusCode) {
+            throw APIError.unexpectedStatusCode(response.statusCode)
+        }
+    }
+}
