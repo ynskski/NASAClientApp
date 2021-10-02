@@ -8,18 +8,20 @@ struct APOTodayView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 List {
-                    Section(header: Text("")) {
-                        if let imageData = viewStore.imageData,
-                           let uiImage = UIImage(data: imageData) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding()
-                        } else {
-                            Image(systemName: "photo")
-                                .foregroundColor(.gray)
+                    Section(
+                        header: Group {
+                            if let imageData = viewStore.imageData,
+                               let uiImage = UIImage(data: imageData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding()
+                            } else {
+                                Image(systemName: "photo")
+                                    .foregroundColor(.gray)
+                            }
                         }
-                    }
+                    ) {}
                     
                     Section(header: Text("Title")) {
                         Text(viewStore.picture?.title ?? "")
