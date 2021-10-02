@@ -30,6 +30,7 @@ let APOTodayReducer = Reducer<
 > { state, action, environment in
     switch action {
     case .fetch:
+        state.error = nil
         state.isLoading = true
         return environment.client.apod()
             .receive(on: environment.mainQueue)

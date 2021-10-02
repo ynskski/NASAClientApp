@@ -8,7 +8,11 @@ struct APOTodayView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 Form {
-                    content(viewStore)
+                    if let error = viewStore.error {
+                        errorRetryView(viewStore, error: error)
+                    } else {
+                        content(viewStore)
+                    }
                 }
                 .onAppear {
                     if viewStore.picture == nil, !viewStore.isLoading {
@@ -59,6 +63,37 @@ struct APOTodayView: View {
                     .redacted(reason: viewStore.isLoading ? .placeholder : [])
             ) {}
         }
+    }
+    
+    @ViewBuilder
+    private func errorRetryView(
+        _ viewStore: ViewStore<APOTodayState, APOTodayAction>,
+        error: APIClientError
+    ) -> some View {
+        Section(
+            header: VStack {
+                Image(systemName: "xmark.octagon")
+                    .imageScale(.large)
+                
+                HStack {
+                    Text("エラーが発生しました")
+                        .foregroundColor(.gray)
+                    
+                    Button(action: { viewStore.send(.fetch) }) {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                    .padding(.horizontal)
+                }
+                .padding()
+                
+                Text(error.localizedDescription)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .textCase(nil)
+            }
+                .frame(maxWidth: .infinity)
+                .padding()
+        ) {}
     }
     
     @ViewBuilder
