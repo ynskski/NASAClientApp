@@ -7,20 +7,10 @@ struct APOTodayView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
-                List {
-                    Section(
-                        header: Group {
-                            if let imageData = viewStore.imageData,
-                               let uiImage = UIImage(data: imageData) {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } else {
-                                Image(systemName: "photo")
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    ) {}
+                Form {
+                    Section(header: Text("Picture").textCase(nil)) {
+                        picture(viewStore)
+                    }
                     
                     Section(header: Text("Title").textCase(nil)) {
                         Text(viewStore.picture?.title ?? "")
@@ -43,8 +33,34 @@ struct APOTodayView: View {
                         viewStore.send(.fetch)
                     }
                 }
-                .listStyle(PlainListStyle())
                 .navigationTitle("Today")
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func picture(
+        _ viewStore: ViewStore<APOTodayState, APOTodayAction>
+    ) -> some View {
+        if viewStore.isLoading || viewStore.isLoadingImage {
+            ProgressView()
+        } else if let imageData = viewStore.imageData,
+                  let uiImage = UIImage(data: imageData) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .aspectRatio(contentMode: .fit)
+                .padding(.vertical)
+        } else {
+            HStack {
+                Text("画像を読み込めませんでした")
+                    .foregroundColor(.gray)
+                
+                Spacer()
+                
+                Button(action: { viewStore.send(.loadImage) }) {
+                    Image(systemName: "arrow.clockwise")
+                }
             }
         }
     }
