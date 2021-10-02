@@ -15,7 +15,6 @@ struct APOTodayView: View {
                                 Image(uiImage: uiImage)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .padding()
                             } else {
                                 Image(systemName: "photo")
                                     .foregroundColor(.gray)
@@ -23,19 +22,20 @@ struct APOTodayView: View {
                         }
                     ) {}
                     
-                    Section(header: Text("Title")) {
+                    Section(header: Text("Title").textCase(nil)) {
                         Text(viewStore.picture?.title ?? "")
                             .font(.body.bold())
                     }
                     
-                    Section(header: Text("Explanation")) {
+                    Section(header: Text("Explanation").textCase(nil)) {
                         Text(viewStore.picture?.explanation ?? "")
                     }
                     
                     if let copyright = viewStore.picture?.copyright {
-                        Section(header: Text("copyright: \(copyright)")) {
-                            EmptyView()
-                        }
+                        Section(
+                            header: Text("copyright: \(copyright)")
+                                .textCase(nil)
+                        ) {}
                     }
                 }
                 .onAppear {
