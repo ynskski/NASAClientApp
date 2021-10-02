@@ -8,16 +8,29 @@ struct APOTodayView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 Form {
-                    Section(header: Text("Picture").textCase(nil)) {
+                    Section(
+                        header: Text("Picture")
+                            .textCase(nil)
+                            .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
+                    ) {
                         picture(viewStore)
+                            .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
                     }
                     
-                    Section(header: Text("Title").textCase(nil)) {
+                    Section(
+                        header: Text("Title")
+                            .textCase(nil)
+                            .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                    ) {
                         Text(viewStore.picture?.title ?? "")
                             .font(.body.bold())
                     }
                     
-                    Section(header: Text("Explanation").textCase(nil)) {
+                    Section(
+                        header: Text("Explanation")
+                            .textCase(nil)
+                            .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                    ) {
                         Text(viewStore.picture?.explanation ?? "")
                     }
                     
@@ -25,6 +38,7 @@ struct APOTodayView: View {
                         Section(
                             header: Text("copyright: \(copyright)")
                                 .textCase(nil)
+                                .redacted(reason: viewStore.isLoading ? .placeholder : [])
                         ) {}
                     }
                 }
@@ -43,7 +57,16 @@ struct APOTodayView: View {
         _ viewStore: ViewStore<APOTodayState, APOTodayAction>
     ) -> some View {
         if viewStore.isLoading || viewStore.isLoadingImage {
-            ProgressView()
+            Image(systemName: "photo")
+                .resizable()
+                .aspectRatio(3 / 2, contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(.vertical)
+                .overlay(
+                    Image(systemName: "photo")
+                        .foregroundColor(.white)
+                        .unredacted()
+                )
         } else if let imageData = viewStore.imageData,
                   let uiImage = UIImage(data: imageData) {
             Image(uiImage: uiImage)
