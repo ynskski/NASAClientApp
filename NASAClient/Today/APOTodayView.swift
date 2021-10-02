@@ -8,39 +8,7 @@ struct APOTodayView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 Form {
-                    Section(
-                        header: Text("Picture")
-                            .textCase(nil)
-                            .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
-                    ) {
-                        picture(viewStore)
-                            .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
-                    }
-                    
-                    Section(
-                        header: Text("Title")
-                            .textCase(nil)
-                            .redacted(reason: viewStore.isLoading ? .placeholder : [])
-                    ) {
-                        Text(viewStore.picture?.title ?? "")
-                            .font(.body.bold())
-                    }
-                    
-                    Section(
-                        header: Text("Explanation")
-                            .textCase(nil)
-                            .redacted(reason: viewStore.isLoading ? .placeholder : [])
-                    ) {
-                        Text(viewStore.picture?.explanation ?? "")
-                    }
-                    
-                    if let copyright = viewStore.picture?.copyright {
-                        Section(
-                            header: Text("copyright: \(copyright)")
-                                .textCase(nil)
-                                .redacted(reason: viewStore.isLoading ? .placeholder : [])
-                        ) {}
-                    }
+                    content(viewStore)
                 }
                 .onAppear {
                     if viewStore.picture == nil, !viewStore.isLoading {
@@ -49,6 +17,45 @@ struct APOTodayView: View {
                 }
                 .navigationTitle("Today")
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func content(
+        _ viewStore: ViewStore<APOTodayState, APOTodayAction>
+    ) -> some View {
+        Section(
+            header: Text("Picture")
+                .textCase(nil)
+                .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
+        ) {
+            picture(viewStore)
+                .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
+        }
+        
+        Section(
+            header: Text("Title")
+                .textCase(nil)
+                .redacted(reason: viewStore.isLoading ? .placeholder : [])
+        ) {
+            Text(viewStore.picture?.title ?? "")
+                .font(.body.bold())
+        }
+        
+        Section(
+            header: Text("Explanation")
+                .textCase(nil)
+                .redacted(reason: viewStore.isLoading ? .placeholder : [])
+        ) {
+            Text(viewStore.picture?.explanation ?? "")
+        }
+        
+        if let copyright = viewStore.picture?.copyright {
+            Section(
+                header: Text("copyright: \(copyright)")
+                    .textCase(nil)
+                    .redacted(reason: viewStore.isLoading ? .placeholder : [])
+            ) {}
         }
     }
     
