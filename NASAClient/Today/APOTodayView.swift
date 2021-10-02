@@ -76,7 +76,7 @@ struct APOTodayView: View {
                     .imageScale(.large)
                 
                 HStack {
-                    Text("エラーが発生しました")
+                    Text("An Error occured")
                         .foregroundColor(.gray)
                     
                     Button(action: { viewStore.send(.fetch) }) {
@@ -120,7 +120,7 @@ struct APOTodayView: View {
                 .padding(.vertical)
         } else {
             HStack {
-                Text("画像を読み込めませんでした")
+                Text("Failed to load picture")
                     .foregroundColor(.gray)
                 
                 Spacer()
