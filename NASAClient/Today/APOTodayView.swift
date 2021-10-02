@@ -8,10 +8,16 @@ struct APOTodayView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 List {
-                    // TODO: Loading image
                     Section(header: Text("")) {
-                        if let url = URL(string: viewStore.picture?.url ?? "") {
-                            Link(url.absoluteString, destination: url)
+                        if let imageData = viewStore.imageData,
+                           let uiImage = UIImage(data: imageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding()
+                        } else {
+                            Image(systemName: "photo")
+                                .foregroundColor(.gray)
                         }
                     }
                     

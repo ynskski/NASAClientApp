@@ -15,6 +15,7 @@ struct ContentView: View {
                 reducer: APOTodayReducer,
                 environment: APODTodayEnvironment(
                     client: .init(session: .shared),
+                    imageLoader: .init(session: .shared),
                     mainQueue: .main
                 )
             )
