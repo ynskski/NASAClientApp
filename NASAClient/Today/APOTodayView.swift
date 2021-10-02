@@ -38,8 +38,9 @@ struct APOTodayView: View {
                 .textCase(nil)
                 .redacted(reason: viewStore.isLoading ? .placeholder : [])
         ) {
-            Text(viewStore.picture?.title ?? "")
+            Text(viewStore.picture?.title ?? titlePlaceHolder)
                 .font(.body.bold())
+                .redacted(reason: viewStore.isLoading ? .placeholder : [])
         }
         
         Section(
@@ -47,7 +48,8 @@ struct APOTodayView: View {
                 .textCase(nil)
                 .redacted(reason: viewStore.isLoading ? .placeholder : [])
         ) {
-            Text(viewStore.picture?.explanation ?? "")
+            Text(viewStore.picture?.explanation ?? explanationPlaceHolder)
+                .redacted(reason: viewStore.isLoading ? .placeholder : [])
         }
         
         if let copyright = viewStore.picture?.copyright {
@@ -93,6 +95,14 @@ struct APOTodayView: View {
                 }
             }
         }
+    }
+    
+    private var titlePlaceHolder: String {
+        "M27: The Dumbbell Nebula"
+    }
+    
+    private var explanationPlaceHolder: String {
+        "What will become of our Sun?"
     }
 }
 
