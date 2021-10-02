@@ -58,6 +58,7 @@
 		021A57EC269C308900A55AC1 /* APOTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTodayView.swift; sourceTree = "<group>"; };
 		02ABDB3D26A1C51D008DDF40 /* APOToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOToday.swift; sourceTree = "<group>"; };
 		02E5A48D2707468000150E98 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		02E5A491270967FE00150E98 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		02EAD1022701F59C001C3F94 /* APIClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +91,7 @@
 		021A57AE269C141100A55AC1 = {
 			isa = PBXGroup;
 			children = (
+				02E5A491270967FE00150E98 /* README.md */,
 				021A57B9269C141100A55AC1 /* NASAClient */,
 				021A57CA269C141200A55AC1 /* NASAClientTests */,
 				021A57D4269C141200A55AC1 /* NASAClientUITests */,
