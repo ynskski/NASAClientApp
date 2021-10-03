@@ -35,17 +35,17 @@ let APOTodayReducer = Reducer<
         return environment.client.apod()
             .receive(on: environment.mainQueue)
             .catchToEffect(APOTodayAction.response)
-        
+
     case let .response(.success(picture)):
         state.isLoading = false
         state.picture = picture
         return .init(value: .loadImage)
-    
+
     case let .response(.failure(error)):
         state.isLoading = false
         state.error = error
         return .none
-        
+
     case .loadImage:
         if state.picture?.mediaType == "video" {
             return .none
@@ -54,12 +54,12 @@ let APOTodayReducer = Reducer<
         return environment.imageLoader.load(from: URL(string: state.picture!.url)!)
             .receive(on: environment.mainQueue)
             .catchToEffect(APOTodayAction.imageResponse)
-        
+
     case let .imageResponse(.success(data)):
         state.isLoadingImage = false
         state.imageData = data
         return .none
-        
+
     case let .imageResponse(.failure(error)):
         state.isLoadingImage = false
         state.error = error

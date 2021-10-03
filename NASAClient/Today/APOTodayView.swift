@@ -1,9 +1,9 @@
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 struct APOTodayView: View {
     let store: Store<APOTodayState, APOTodayAction>
-    
+
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
@@ -23,7 +23,7 @@ struct APOTodayView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private func content(
         _ viewStore: ViewStore<APOTodayState, APOTodayAction>
@@ -36,7 +36,7 @@ struct APOTodayView: View {
             picture(viewStore)
                 .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
         }
-        
+
         Section(
             header: Text("Title")
                 .textCase(nil)
@@ -46,7 +46,7 @@ struct APOTodayView: View {
                 .font(.body.bold())
                 .redacted(reason: viewStore.isLoading ? .placeholder : [])
         }
-        
+
         Section(
             header: Text("Explanation")
                 .textCase(nil)
@@ -55,7 +55,7 @@ struct APOTodayView: View {
             Text(viewStore.picture?.explanation ?? explanationPlaceHolder)
                 .redacted(reason: viewStore.isLoading ? .placeholder : [])
         }
-        
+
         if let copyright = viewStore.picture?.copyright {
             Section(
                 header: Text("copyright: \(copyright)")
@@ -64,7 +64,7 @@ struct APOTodayView: View {
             ) {}
         }
     }
-    
+
     @ViewBuilder
     private func errorRetryView(
         _ viewStore: ViewStore<APOTodayState, APOTodayAction>,
@@ -74,28 +74,28 @@ struct APOTodayView: View {
             header: VStack {
                 Image(systemName: "xmark.octagon")
                     .imageScale(.large)
-                
+
                 HStack {
                     Text("An Error occured")
                         .foregroundColor(.gray)
-                    
+
                     Button(action: { viewStore.send(.fetch) }) {
                         Image(systemName: "arrow.clockwise")
                     }
                     .padding(.horizontal)
                 }
                 .padding()
-                
+
                 Text(error.localizedDescription)
                     .font(.caption)
                     .foregroundColor(.gray)
                     .textCase(nil)
             }
-                .frame(maxWidth: .infinity)
-                .padding()
+            .frame(maxWidth: .infinity)
+            .padding()
         ) {}
     }
-    
+
     @ViewBuilder
     private func picture(
         _ viewStore: ViewStore<APOTodayState, APOTodayAction>
@@ -112,7 +112,8 @@ struct APOTodayView: View {
                         .unredacted()
                 )
         } else if let imageData = viewStore.imageData,
-                  let uiImage = UIImage(data: imageData) {
+                  let uiImage = UIImage(data: imageData)
+        {
             Image(uiImage: uiImage)
                 .resizable()
                 .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -122,20 +123,20 @@ struct APOTodayView: View {
             HStack {
                 Text("Failed to load picture")
                     .foregroundColor(.gray)
-                
+
                 Spacer()
-                
+
                 Button(action: { viewStore.send(.loadImage) }) {
                     Image(systemName: "arrow.clockwise")
                 }
             }
         }
     }
-    
+
     private var titlePlaceHolder: String {
         "M27: The Dumbbell Nebula"
     }
-    
+
     private var explanationPlaceHolder: String {
         "What will become of our Sun?"
     }
@@ -165,7 +166,7 @@ struct APOTodayView_Previews: PreviewProvider {
             )
         }
         .previewDisplayName("画像")
-        
+
         NavigationView {
             APOTodayView(
                 store: .init(

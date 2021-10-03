@@ -1,15 +1,15 @@
 import Combine
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 final class APIClient {
     private let session: URLSession
     private let baseURL = "https://api.nasa.gov"
-    
+
     init(session: URLSession) {
         self.session = session
     }
-    
+
     private convenience init() {
         let config = URLSessionConfiguration.default
         let session = URLSession(
@@ -19,13 +19,13 @@ final class APIClient {
         )
         self.init(session: session)
     }
-    
+
     func apod() -> Effect<AstronomyPicture, APIClientError> {
         var urlComponents = URLComponents(string: "\(baseURL)/planetary/apod")!
         urlComponents.queryItems = [
-            URLQueryItem(name: "api_key", value: API_KEY)
+            URLQueryItem(name: "api_key", value: API_KEY),
         ]
-        
+
         return session.dataTaskPublisher(for: urlComponents.url!)
             .tryMap { data, response in
                 try throwErrorForResponse(response)

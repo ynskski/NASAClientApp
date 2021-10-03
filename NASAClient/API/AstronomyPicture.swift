@@ -8,7 +8,7 @@ struct AstronomyPicture: Decodable, Equatable {
     var mediaType: String
     var title: String
     var url: String
-    
+
     enum CodingKeys: String, CodingKey {
         case copyright
         case date
