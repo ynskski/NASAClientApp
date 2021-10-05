@@ -13,7 +13,7 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
       - name: Inject API key
-        run: echo "let API_KEY = \"${{ secrets.API_KEY }}\"" > /Users/runner/work/NASAClientApp/NASAClientApp/NASAClient/API/Secret.swift
+        run: echo "let API_KEY = \"${{ secrets.API_KEY }}\"" > ./NASAClient/API/Secret.swift
       - name: Build
         run: xcodebuild 
           -scheme NASAClient
