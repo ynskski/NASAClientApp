@@ -32,4 +32,18 @@ class NASAClientTests: XCTestCase {
             $0.imageData = .init()
         }
     }
+    
+    func test_flow_fetch_video_success() {
+        store.send(.fetch) {
+            $0.isLoading = true
+        }
+        
+        store.send(.response(.success(.mockVideo()))) {
+            $0.isLoading = false
+            $0.picture = .mockVideo()
+        }
+        
+        // Unimplemented processing video url.
+        store.receive(.loadImage)
+    }
 }

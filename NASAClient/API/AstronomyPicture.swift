@@ -32,4 +32,16 @@ extension AstronomyPicture {
             url: "url"
         )
     }
+    
+    static func mockVideo() -> Self {
+        .init(
+            copyright: "copyright",
+            date: "2021-07-12",
+            explanation: "explanation",
+            hdURL: nil,
+            mediaType: "video",
+            title: "title",
+            url: "url"
+        )
+    }
 }
