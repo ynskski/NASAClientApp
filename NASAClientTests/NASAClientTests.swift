@@ -33,6 +33,27 @@ class NASAClientTests: XCTestCase {
         }
     }
     
+    func test_flow_fetch_image_failure() {
+        store.send(.fetch) {
+            $0.isLoading = true
+        }
+        
+        store.send(.response(.success(.mockImage()))) {
+            $0.isLoading = false
+            $0.picture = .mockImage()
+        }
+        
+        store.receive(.loadImage) {
+            $0.isLoadingImage = true
+        }
+        
+        let mockError: APIClientError = .mock()
+        store.send(.imageResponse(.failure(mockError))) {
+            $0.isLoadingImage = false
+            $0.error = mockError
+        }
+    }
+    
     func test_flow_fetch_video_success() {
         store.send(.fetch) {
             $0.isLoading = true
