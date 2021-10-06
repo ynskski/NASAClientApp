@@ -19,3 +19,17 @@ struct AstronomyPicture: Decodable, Equatable {
         case url
     }
 }
+
+extension AstronomyPicture {
+    static func mockImage() -> Self {
+        .init(
+            copyright: "copyright",
+            date: "2021-07-12",
+            explanation: "explanation",
+            hdURL: "hdURL",
+            mediaType: "image",
+            title: "title",
+            url: "url"
+        )
+    }
+}
