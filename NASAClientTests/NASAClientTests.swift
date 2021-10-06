@@ -1,31 +1,82 @@
-//
-//  NASAClientTests.swift
-//  NASAClientTests
-//
-//  Created by Yunosuke Sakai on 2021/07/12.
-//
-
+import ComposableArchitecture
 @testable import NASAClient
 import XCTest
 
 class NASAClientTests: XCTestCase {
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    let store = TestStore(
+        initialState: APOTodayState(),
+        reducer: APOTodayReducer,
+        environment: APODTodayEnvironment(
+            client: .init(session: .shared),
+            imageLoader: .init(session: .shared),
+            mainQueue: .main
+        )
+    )
+
+    func test_flow_fetch_image_success() {
+        store.send(.fetch) {
+            $0.isLoading = true
+        }
+
+        store.send(.response(.success(.mockImage()))) {
+            $0.isLoading = false
+            $0.picture = .mockImage()
+        }
+
+        store.receive(.loadImage) {
+            $0.isLoadingImage = true
+        }
+
+        store.send(.imageResponse(.success(.init()))) {
+            $0.isLoadingImage = false
+            $0.imageData = .init()
+        }
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_flow_fetch_image_failure() {
+        store.send(.fetch) {
+            $0.isLoading = true
+        }
+
+        store.send(.response(.success(.mockImage()))) {
+            $0.isLoading = false
+            $0.picture = .mockImage()
+        }
+
+        store.receive(.loadImage) {
+            $0.isLoadingImage = true
+        }
+
+        let mockError: APIClientError = .mock()
+        store.send(.imageResponse(.failure(mockError))) {
+            $0.isLoadingImage = false
+            $0.error = mockError
+        }
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_flow_fetch_video_success() {
+        store.send(.fetch) {
+            $0.isLoading = true
+        }
+
+        store.send(.response(.success(.mockVideo()))) {
+            $0.isLoading = false
+            $0.picture = .mockVideo()
+        }
+
+        // Unimplemented processing video url.
+        store.receive(.loadImage)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func test_flow_fetch_failure() {
+        store.send(.fetch) {
+            $0.isLoading = true
+        }
+
+        let mockError: APIClientError = .mock()
+        store.send(.response(.failure(mockError))) {
+            $0.isLoading = false
+            $0.error = mockError
         }
     }
 }

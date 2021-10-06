@@ -16,3 +16,9 @@ struct APIClientError: LocalizedError, Equatable {
         lhs.uuid == rhs.uuid
     }
 }
+
+extension APIClientError {
+    static func mock() -> Self {
+        .init(error: APIError.unexpectedStatusCode(400))
+    }
+}
