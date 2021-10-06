@@ -46,4 +46,16 @@ class NASAClientTests: XCTestCase {
         // Unimplemented processing video url.
         store.receive(.loadImage)
     }
+    
+    func test_flow_fetch_failure() {
+        store.send(.fetch) {
+            $0.isLoading = true
+        }
+        
+        let mockError: APIClientError = .mock()
+        store.send(.response(.failure(mockError))) {
+            $0.isLoading = false
+            $0.error = mockError
+        }
+    }
 }
