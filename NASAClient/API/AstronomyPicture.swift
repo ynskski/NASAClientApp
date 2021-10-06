@@ -32,7 +32,7 @@ extension AstronomyPicture {
             url: "url"
         )
     }
-    
+
     static func mockVideo() -> Self {
         .init(
             copyright: "copyright",
