@@ -14,12 +14,6 @@ jobs:
         run: xcodebuild -version
       - name: Inject API key
         run: echo "let API_KEY = \"${{ secrets.API_KEY }}\"" > ./NASAClient/API/Secret.swift
-      - name: Build
-        run: xcodebuild 
-          -scheme NASAClient
-          -sdk iphonesimulator
-          -configuration Debug
-          build
       - name: Run tests
         run: xcodebuild
           -scheme NASAClient
