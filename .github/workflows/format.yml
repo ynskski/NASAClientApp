@@ -1,0 +1,21 @@
+name: Format
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  format:
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install SwiftFormat
+        run: brew install swiftformat
+      - name: Run SwiftFormat
+        run: swiftformat --verbose .
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+            commit_message: Run SwiftFormat
+            branch: 'main'
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
