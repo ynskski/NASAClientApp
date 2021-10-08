@@ -107,7 +107,7 @@ struct APOTodayView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .padding(.vertical)
                 .overlay(
-                    Image(systemName: "photo")
+                    ProgressView()
                         .foregroundColor(.white)
                         .unredacted()
                 )
