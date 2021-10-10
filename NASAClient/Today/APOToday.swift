@@ -39,7 +39,16 @@ let APOTodayReducer = Reducer<
     case let .response(.success(picture)):
         state.isLoading = false
         state.picture = picture
-        return .init(value: .loadImage)
+        
+        switch picture.mediaTypeEnum {
+        case .image:
+            return .init(value: .loadImage)
+        case .video:
+            // TODO: Processing YouTube URL
+            return .none
+        case .unknown:
+            return .none
+        }
 
     case let .response(.failure(error)):
         state.isLoading = false
@@ -47,9 +56,6 @@ let APOTodayReducer = Reducer<
         return .none
 
     case .loadImage:
-        if state.picture?.mediaType == "video" {
-            return .none
-        }
         state.isLoadingImage = true
         return environment.imageLoader.load(from: URL(string: state.picture!.url)!)
             .receive(on: environment.mainQueue)

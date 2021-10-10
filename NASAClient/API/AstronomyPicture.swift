@@ -21,6 +21,23 @@ struct AstronomyPicture: Decodable, Equatable {
 }
 
 extension AstronomyPicture {
+    var mediaTypeEnum: MediaType {
+        if mediaType == "image" {
+            return .image
+        } else if mediaType == "video" {
+            return .video
+        }
+        return .unknown
+    }
+    
+    enum MediaType {
+        case image
+        case video
+        case unknown
+    }
+}
+
+extension AstronomyPicture {
     static func mockImage() -> Self {
         .init(
             copyright: "copyright",
