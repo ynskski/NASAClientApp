@@ -65,7 +65,6 @@ class NASAClientTests: XCTestCase {
         }
 
         // Unimplemented processing video url.
-        store.receive(.loadImage)
     }
 
     func test_flow_fetch_failure() {
