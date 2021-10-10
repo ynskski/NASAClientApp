@@ -120,14 +120,14 @@ struct APOTodayView: View {
                 .aspectRatio(contentMode: .fit)
                 .padding(.vertical)
         } else {
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Failed to load picture")
                     .foregroundColor(.gray)
-
-                Spacer()
-
-                Button(action: { viewStore.send(.loadImage) }) {
-                    Image(systemName: "arrow.clockwise")
+                
+                if let urlString = viewStore.picture?.url {
+                    Link(urlString, destination: URL(string: urlString)!)
+                        .font(.caption)
+                        .padding(.top)
                 }
             }
         }
