@@ -29,7 +29,7 @@ extension AstronomyPicture {
         }
         return .unknown
     }
-    
+
     enum MediaType {
         case image
         case video

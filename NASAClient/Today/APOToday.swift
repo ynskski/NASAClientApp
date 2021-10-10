@@ -39,7 +39,7 @@ let APOTodayReducer = Reducer<
     case let .response(.success(picture)):
         state.isLoading = false
         state.picture = picture
-        
+
         switch picture.mediaTypeEnum {
         case .image:
             return .init(value: .loadImage)
