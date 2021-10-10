@@ -123,7 +123,7 @@ struct APOTodayView: View {
             VStack(alignment: .leading) {
                 Text("Failed to load picture")
                     .foregroundColor(.gray)
-                
+
                 if let urlString = viewStore.picture?.url {
                     Link(urlString, destination: URL(string: urlString)!)
                         .font(.caption)
