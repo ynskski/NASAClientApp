@@ -3,6 +3,7 @@ import SwiftUI
 
 struct APOTodayView: View {
     let store: Store<APOTodayState, APOTodayAction>
+    @State private var isPresentedFullScreenImage = false
 
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -20,6 +21,16 @@ struct APOTodayView: View {
                     }
                 }
                 .navigationTitle("Today")
+                .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
+                    if let imageData = viewStore.imageData,
+                       let uiImage = UIImage(data: imageData)
+                    {
+                        FullScreenImageView(
+                            image: Image(uiImage: uiImage),
+                            isPresentedFulScreenImageView: $isPresentedFullScreenImage
+                        )
+                    }
+                }
             }
         }
     }
@@ -119,6 +130,9 @@ struct APOTodayView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .aspectRatio(contentMode: .fit)
                 .padding(.vertical)
+                .onTapGesture {
+                    isPresentedFullScreenImage = true
+                }
         } else {
             VStack(alignment: .leading) {
                 Text("Failed to load picture")
