@@ -2,50 +2,77 @@ import ComposableArchitecture
 import SwiftUI
 
 struct APOTodayView: View {
-    let store: Store<APOTodayState, APOTodayAction>
+    let store: StoreOf<APODReducer>
+    @ObservedObject private var viewStore: ViewStoreOf<APODReducer>
+    
     @State private var isPresentedFullScreenImage = false
-
-    var body: some View {
-        WithViewStore(store) { viewStore in
-            NavigationView {
-                Form {
-                    if let error = viewStore.error {
-                        errorRetryView(viewStore, error: error)
-                    } else {
-                        content(viewStore)
-                    }
-                }
-                .onAppear {
-                    if viewStore.picture == nil, !viewStore.isLoading {
-                        viewStore.send(.fetch)
-                    }
-                }
-                .navigationTitle("Today")
-                .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
-                    if let imageData = viewStore.imageData,
-                       let uiImage = UIImage(data: imageData)
-                    {
-                        FullScreenImageView(
-                            image: Image(uiImage: uiImage),
-                            isPresentedFulScreenImageView: $isPresentedFullScreenImage
-                        )
-                    }
-                }
-            }
-        }
+    
+    init(store: StoreOf<APODReducer>) {
+        self.store = store
+        viewStore = .init(store)
     }
 
+    var body: some View {
+        NavigationView {
+            List {
+                if let error = viewStore.error {
+                    errorRetryView(error: error)
+                } else {
+                    content
+                }
+            }
+            .onAppear {
+                if viewStore.picture == nil, !viewStore.isLoading {
+                    viewStore.send(.fetch)
+                }
+            }
+            .navigationTitle("Today")
+        }
+    }
+    
     @ViewBuilder
-    private func content(
-        _ viewStore: ViewStore<APOTodayState, APOTodayAction>
-    ) -> some View {
-        Section(
+    private var content: some View {
+        Section (
             header: Text("Picture")
                 .textCase(nil)
-                .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
+                .redacted(reason: viewStore.isLoading ? .placeholder : [])
         ) {
-            picture(viewStore)
-                .redacted(reason: viewStore.isLoading || viewStore.isLoadingImage ? .placeholder : [])
+            if let picture = viewStore.picture {
+                AsyncImage(url: .init(string: picture.url)) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                    case let .success(image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .onTapGesture {
+                                isPresentedFullScreenImage = true
+                            }
+                            .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
+                                FullScreenImageView(
+                                    closeButtonTapped: { isPresentedFullScreenImage = false },
+                                    hdImageURL: picture.hdURL.map { URL(string: $0)! },
+                                    image: image
+                                )
+                            }
+                    case let .failure(error):
+                        VStack {
+                            Text("Failed to open:")
+                            Link(picture.url, destination: URL(string: picture.url)!)
+                            Text(error.localizedDescription)
+                        }
+                    @unknown default:
+                        Text("Unexpected error occurred.")
+                    }
+                }
+            } else if let error = viewStore.error {
+                errorRetryView(error: error)
+            } else {
+                ProgressView()
+                    .frame(maxWidth: .infinity)
+            }
         }
 
         Section(
@@ -77,10 +104,7 @@ struct APOTodayView: View {
     }
 
     @ViewBuilder
-    private func errorRetryView(
-        _ viewStore: ViewStore<APOTodayState, APOTodayAction>,
-        error: APIClientError
-    ) -> some View {
+    private func errorRetryView(error: TextState) -> some View {
         Section(
             header: VStack {
                 Image(systemName: "xmark.octagon")
@@ -97,7 +121,7 @@ struct APOTodayView: View {
                 }
                 .padding()
 
-                Text(error.localizedDescription)
+                Text(error)
                     .font(.caption)
                     .foregroundColor(.gray)
                     .textCase(nil)
@@ -105,46 +129,6 @@ struct APOTodayView: View {
             .frame(maxWidth: .infinity)
             .padding()
         ) {}
-    }
-
-    @ViewBuilder
-    private func picture(
-        _ viewStore: ViewStore<APOTodayState, APOTodayAction>
-    ) -> some View {
-        if viewStore.isLoading || viewStore.isLoadingImage {
-            Image(systemName: "photo")
-                .resizable()
-                .aspectRatio(3 / 2, contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding(.vertical)
-                .overlay(
-                    ProgressView()
-                        .foregroundColor(.white)
-                        .unredacted()
-                )
-        } else if let imageData = viewStore.imageData,
-                  let uiImage = UIImage(data: imageData)
-        {
-            Image(uiImage: uiImage)
-                .resizable()
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .aspectRatio(contentMode: .fit)
-                .padding(.vertical)
-                .onTapGesture {
-                    isPresentedFullScreenImage = true
-                }
-        } else {
-            VStack(alignment: .leading) {
-                Text("Failed to load picture")
-                    .foregroundColor(.gray)
-
-                if let urlString = viewStore.picture?.url {
-                    Link(urlString, destination: URL(string: urlString)!)
-                        .font(.caption)
-                        .padding(.top)
-                }
-            }
-        }
     }
 
     private var titlePlaceHolder: String {
@@ -162,6 +146,7 @@ struct APOTodayView_Previews: PreviewProvider {
             APOTodayView(
                 store: .init(
                     initialState: .init(
+                        error: nil,
                         isLoading: false,
                         picture: .init(
                             copyright: "Bray FallsKeith Quattrocchi",
@@ -171,8 +156,7 @@ struct APOTodayView_Previews: PreviewProvider {
                             mediaType: "image",
                             title: "M27: The Dumbbell Nebula",
                             url: "https://apod.nasa.gov/apod/image/2107/M27_Falls_960.jpg"
-                        ),
-                        error: nil
+                        )
                     ),
                     reducer: .empty,
                     environment: ()
@@ -185,6 +169,7 @@ struct APOTodayView_Previews: PreviewProvider {
             APOTodayView(
                 store: .init(
                     initialState: .init(
+                        error: nil,
                         isLoading: false,
                         picture: .init(
                             copyright: nil,
@@ -194,8 +179,7 @@ struct APOTodayView_Previews: PreviewProvider {
                             mediaType: "video",
                             title: "GW200115: Simulation of a Black Hole Merging with a Neutron Star",
                             url: "https://www.youtube.com/embed/V_Kd4YBNs7c?rel=0"
-                        ),
-                        error: nil
+                        )
                     ),
                     reducer: .empty,
                     environment: ()

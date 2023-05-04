@@ -2,37 +2,33 @@ import Combine
 import ComposableArchitecture
 import Foundation
 
-final class APIClient {
-    private let session: URLSession
-    private let baseURL = "https://api.nasa.gov"
+struct APIClient {
+    var apod: @Sendable () async throws -> AstronomyPicture
+}
 
-    init(session: URLSession) {
-        self.session = session
+extension APIClient: TestDependencyKey {
+    static let testValue = Self(
+        apod: unimplemented("\(Self.self).apod")
+    )
+}
+
+extension DependencyValues {
+    var apiClient: APIClient {
+        get { self[APIClient.self] }
+        set { self[APIClient.self] = newValue }
     }
+}
 
-    private convenience init() {
-        let config = URLSessionConfiguration.default
-        let session = URLSession(
-            configuration: config,
-            delegate: nil,
-            delegateQueue: OperationQueue.main
-        )
-        self.init(session: session)
-    }
-
-    func apod() -> Effect<AstronomyPicture, APIClientError> {
-        var urlComponents = URLComponents(string: "\(baseURL)/planetary/apod")!
-        urlComponents.queryItems = [
-            URLQueryItem(name: "api_key", value: API_KEY),
-        ]
-
-        return session.dataTaskPublisher(for: urlComponents.url!)
-            .tryMap { data, response in
-                try throwErrorForResponse(response)
-                return data
-            }
-            .decode(type: AstronomyPicture.self, decoder: JSONDecoder())
-            .mapError(APIClientError.init)
-            .eraseToEffect()
-    }
+extension APIClient: DependencyKey {
+    static let liveValue = APIClient(
+        apod: {
+            var components = URLComponents(string: "https://api.nasa.gov/planetary/apod")!
+            components.queryItems = [
+                URLQueryItem(name: "api_key", value: API_KEY),
+            ]
+            
+            let (data, _) = try await URLSession.shared.data(from: components.url!)
+            return try JSONDecoder().decode(AstronomyPicture.self, from: data)
+        }
+    )
 }

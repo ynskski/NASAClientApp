@@ -12,12 +12,7 @@ struct ContentView: View {
         APOTodayView(
             store: .init(
                 initialState: .init(),
-                reducer: APOTodayReducer,
-                environment: APODTodayEnvironment(
-                    client: .init(session: .shared),
-                    imageLoader: .init(session: .shared),
-                    mainQueue: .main
-                )
+                reducer: APODReducer()
             )
         )
     }

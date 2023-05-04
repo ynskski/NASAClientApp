@@ -16,13 +16,10 @@
 		021A57E4269C155100A55AC1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E3269C155100A55AC1 /* APIClient.swift */; };
 		021A57E6269C17A400A55AC1 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E5269C17A400A55AC1 /* Secret.swift */; };
 		021A57E8269C1E0900A55AC1 /* AstronomyPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */; };
-		021A57EA269C205C00A55AC1 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E9269C205C00A55AC1 /* APIError.swift */; };
 		021A57ED269C308900A55AC1 /* APOTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57EC269C308900A55AC1 /* APOTodayView.swift */; };
 		02698D1B2716BD570039ADEC /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02698D1A2716BD570039ADEC /* FullScreenImageView.swift */; };
 		02ABDB3C26A1C2FB008DDF40 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 02ABDB3B26A1C2FB008DDF40 /* ComposableArchitecture */; };
 		02ABDB3E26A1C51D008DDF40 /* APOToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABDB3D26A1C51D008DDF40 /* APOToday.swift */; };
-		02E5A48E2707468000150E98 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5A48D2707468000150E98 /* ImageLoader.swift */; };
-		02EAD1032701F59C001C3F94 /* APIClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EAD1022701F59C001C3F94 /* APIClientError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +52,10 @@
 		021A57E3269C155100A55AC1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		021A57E5269C17A400A55AC1 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyPicture.swift; sourceTree = "<group>"; };
-		021A57E9269C205C00A55AC1 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		021A57EC269C308900A55AC1 /* APOTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTodayView.swift; sourceTree = "<group>"; };
 		02698D1A2716BD570039ADEC /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
 		02ABDB3D26A1C51D008DDF40 /* APOToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOToday.swift; sourceTree = "<group>"; };
-		02E5A48D2707468000150E98 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		02E5A491270967FE00150E98 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		02EAD1022701F59C001C3F94 /* APIClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,9 +148,6 @@
 				021A57E3269C155100A55AC1 /* APIClient.swift */,
 				021A57E5269C17A400A55AC1 /* Secret.swift */,
 				021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */,
-				021A57E9269C205C00A55AC1 /* APIError.swift */,
-				02EAD1022701F59C001C3F94 /* APIClientError.swift */,
-				02E5A48D2707468000150E98 /* ImageLoader.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -310,14 +301,11 @@
 				02698D1B2716BD570039ADEC /* FullScreenImageView.swift in Sources */,
 				021A57E8269C1E0900A55AC1 /* AstronomyPicture.swift in Sources */,
 				021A57ED269C308900A55AC1 /* APOTodayView.swift in Sources */,
-				02E5A48E2707468000150E98 /* ImageLoader.swift in Sources */,
 				02ABDB3E26A1C51D008DDF40 /* APOToday.swift in Sources */,
 				021A57BD269C141100A55AC1 /* ContentView.swift in Sources */,
 				021A57E6269C17A400A55AC1 /* Secret.swift in Sources */,
 				021A57BB269C141100A55AC1 /* NASAClientApp.swift in Sources */,
 				021A57E4269C155100A55AC1 /* APIClient.swift in Sources */,
-				02EAD1032701F59C001C3F94 /* APIClientError.swift in Sources */,
-				021A57EA269C205C00A55AC1 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +473,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,7 +503,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,7 +526,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H6T6MUCK9A;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,7 +551,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H6T6MUCK9A;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
