@@ -13,21 +13,19 @@ struct APOTodayView: View {
     }
 
     var body: some View {
-        NavigationView {
-            List {
-                if let error = viewStore.error {
-                    errorRetryView(error: error)
-                } else {
-                    content
-                }
+        List {
+            if let error = viewStore.error {
+                errorRetryView(error: error)
+            } else {
+                content
             }
-            .onAppear {
-                if viewStore.picture == nil, !viewStore.isLoading {
-                    viewStore.send(.fetch)
-                }
-            }
-            .navigationTitle("Today")
         }
+        .onAppear {
+            if viewStore.picture == nil, !viewStore.isLoading {
+                viewStore.send(.fetch)
+            }
+        }
+        .navigationTitle("Today")
     }
     
     @ViewBuilder
@@ -38,34 +36,41 @@ struct APOTodayView: View {
                 .redacted(reason: viewStore.isLoading ? .placeholder : [])
         ) {
             if let picture = viewStore.picture {
-                AsyncImage(url: .init(string: picture.url)) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                            .frame(maxWidth: .infinity)
-                    case let .success(image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .onTapGesture {
-                                isPresentedFullScreenImage = true
+                switch picture.mediaTypeEnum {
+                case .image:
+                    AsyncImage(url: .init(string: picture.url)) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                                .frame(maxWidth: .infinity)
+                        case let .success(image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .onTapGesture {
+                                    isPresentedFullScreenImage = true
+                                }
+                                .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
+                                    FullScreenImageView(
+                                        closeButtonTapped: { isPresentedFullScreenImage = false },
+                                        hdImageURL: picture.hdURL.map { URL(string: $0)! },
+                                        image: image
+                                    )
+                                }
+                        case let .failure(error):
+                            VStack {
+                                Text("Failed to open:")
+                                Link(picture.url, destination: URL(string: picture.url)!)
+                                Text(error.localizedDescription)
                             }
-                            .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
-                                FullScreenImageView(
-                                    closeButtonTapped: { isPresentedFullScreenImage = false },
-                                    hdImageURL: picture.hdURL.map { URL(string: $0)! },
-                                    image: image
-                                )
-                            }
-                    case let .failure(error):
-                        VStack {
-                            Text("Failed to open:")
-                            Link(picture.url, destination: URL(string: picture.url)!)
-                            Text(error.localizedDescription)
+                        @unknown default:
+                            Text("Unexpected error occurred.")
                         }
-                    @unknown default:
-                        Text("Unexpected error occurred.")
                     }
+                case .video:
+                    WebView(url: .init(string: picture.url)!)
+                case .unknown:
+                    Text("Unexpected error occurred.")
                 }
             } else if let error = viewStore.error {
                 errorRetryView(error: error)

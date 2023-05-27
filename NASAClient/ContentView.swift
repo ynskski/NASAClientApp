@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        APOTodayView(
-            store: .init(
-                initialState: .init(),
-                reducer: APODReducer()
+        NavigationView {
+            APOTodayView(
+                store: .init(
+                    initialState: .init(),
+                    reducer: APODReducer()
+                )
             )
-        )
+        }
     }
 }
 
