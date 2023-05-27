@@ -1,7 +1,7 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct APOTodayView: View {
+struct APODView: View {
     let store: StoreOf<APODReducer>
     @ObservedObject private var viewStore: ViewStoreOf<APODReducer>
     
@@ -148,7 +148,7 @@ struct APOTodayView: View {
 struct APOTodayView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            APOTodayView(
+            APODView(
                 store: .init(
                     initialState: .init(
                         error: nil,
@@ -171,7 +171,7 @@ struct APOTodayView_Previews: PreviewProvider {
         .previewDisplayName("画像")
 
         NavigationView {
-            APOTodayView(
+            APODView(
                 store: .init(
                     initialState: .init(
                         error: nil,

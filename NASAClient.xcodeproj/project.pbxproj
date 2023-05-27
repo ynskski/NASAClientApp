@@ -16,7 +16,7 @@
 		021A57E4269C155100A55AC1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E3269C155100A55AC1 /* APIClient.swift */; };
 		021A57E6269C17A400A55AC1 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E5269C17A400A55AC1 /* Secret.swift */; };
 		021A57E8269C1E0900A55AC1 /* AstronomyPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */; };
-		021A57ED269C308900A55AC1 /* APOTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57EC269C308900A55AC1 /* APOTodayView.swift */; };
+		021A57ED269C308900A55AC1 /* APODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57EC269C308900A55AC1 /* APODView.swift */; };
 		02698D1B2716BD570039ADEC /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02698D1A2716BD570039ADEC /* FullScreenImageView.swift */; };
 		02ABDB3C26A1C2FB008DDF40 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 02ABDB3B26A1C2FB008DDF40 /* ComposableArchitecture */; };
 		02ABDB3E26A1C51D008DDF40 /* APODReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABDB3D26A1C51D008DDF40 /* APODReducer.swift */; };
@@ -53,7 +53,7 @@
 		021A57E3269C155100A55AC1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		021A57E5269C17A400A55AC1 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyPicture.swift; sourceTree = "<group>"; };
-		021A57EC269C308900A55AC1 /* APOTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTodayView.swift; sourceTree = "<group>"; };
+		021A57EC269C308900A55AC1 /* APODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODView.swift; sourceTree = "<group>"; };
 		02698D1A2716BD570039ADEC /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
 		02ABDB3D26A1C51D008DDF40 /* APODReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODReducer.swift; sourceTree = "<group>"; };
 		02BA689A2A21FF0B00DC4B69 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		021A57EB269C305F00A55AC1 /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				021A57EC269C308900A55AC1 /* APOTodayView.swift */,
+				021A57EC269C308900A55AC1 /* APODView.swift */,
 				02ABDB3D26A1C51D008DDF40 /* APODReducer.swift */,
 				02698D1A2716BD570039ADEC /* FullScreenImageView.swift */,
 			);
@@ -311,7 +311,7 @@
 			files = (
 				02698D1B2716BD570039ADEC /* FullScreenImageView.swift in Sources */,
 				021A57E8269C1E0900A55AC1 /* AstronomyPicture.swift in Sources */,
-				021A57ED269C308900A55AC1 /* APOTodayView.swift in Sources */,
+				021A57ED269C308900A55AC1 /* APODView.swift in Sources */,
 				02ABDB3E26A1C51D008DDF40 /* APODReducer.swift in Sources */,
 				021A57BD269C141100A55AC1 /* ContentView.swift in Sources */,
 				021A57E6269C17A400A55AC1 /* Secret.swift in Sources */,

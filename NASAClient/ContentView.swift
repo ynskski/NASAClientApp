@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            APOTodayView(
+            APODView(
                 store: .init(
                     initialState: .init(),
                     reducer: APODReducer()
