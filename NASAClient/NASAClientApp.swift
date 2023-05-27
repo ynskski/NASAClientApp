@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import XCTestDynamicOverlay
 
 @main
 struct NASAClientApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if !_XCTIsTesting {
+                ContentView()
+            }
         }
     }
 }

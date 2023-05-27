@@ -30,7 +30,7 @@ final class NASAClientTests: XCTestCase {
         )
         
         let error = NSError(domain: "test", code: 1)
-        store.dependencies.apiClient.apod = { AstronomyPicture.mockImage() }
+        store.dependencies.apiClient.apod = { throw error }
         
         await store.send(.fetch) {
             $0.isLoading = true
