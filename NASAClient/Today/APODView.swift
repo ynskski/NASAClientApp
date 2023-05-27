@@ -69,6 +69,7 @@ struct APODView: View {
                     }
                 case .video:
                     WebView(url: .init(string: picture.url)!)
+                        .aspectRatio(contentMode: .fit)
                 case .unknown:
                     Text("Unexpected error occurred.")
                 }
