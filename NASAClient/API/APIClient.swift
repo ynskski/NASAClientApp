@@ -1,8 +1,8 @@
-import Combine
-import ComposableArchitecture
+import Dependencies
 import Foundation
+import XCTestDynamicOverlay
 
-struct APIClient {
+struct APIClient: Sendable {
     var apod: @Sendable () async throws -> AstronomyPicture
 }
 

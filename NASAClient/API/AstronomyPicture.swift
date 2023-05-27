@@ -1,6 +1,6 @@
 import Foundation
 
-struct AstronomyPicture: Decodable, Equatable {
+struct AstronomyPicture: Decodable, Equatable, Sendable {
     var copyright: String?
     var date: String
     var explanation: String

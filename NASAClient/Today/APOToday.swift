@@ -13,7 +13,7 @@ struct APODReducer: ReducerProtocol {
         case response(TaskResult<AstronomyPicture>)
     }
     
-    @Dependency(\.apiClient) var client
+    @Dependency(\.apiClient) private var client
     
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action {

@@ -2,80 +2,43 @@ import ComposableArchitecture
 @testable import NASAClient
 import XCTest
 
-class NASAClientTests: XCTestCase {
-    let store = TestStore(
-        initialState: APOTodayState(),
-        reducer: APOTodayReducer,
-        environment: APODTodayEnvironment(
-            client: .init(session: .shared),
-            imageLoader: .init(session: .shared),
-            mainQueue: .main
+@MainActor
+final class NASAClientTests: XCTestCase {
+    func test_fetch() async {
+        let store = TestStore(
+            initialState: .init(),
+            reducer: APODReducer()
         )
-    )
-
-    func test_flow_fetch_image_success() {
-        store.send(.fetch) {
+        
+        let mock = AstronomyPicture.mockImage()
+        store.dependencies.apiClient.apod = { mock }
+        
+        await store.send(.fetch) {
             $0.isLoading = true
         }
-
-        store.send(.response(.success(.mockImage()))) {
+        
+        await store.receive(.response(.success(mock))) {
             $0.isLoading = false
-            $0.picture = .mockImage()
-        }
-
-        store.receive(.loadImage) {
-            $0.isLoadingImage = true
-        }
-
-        store.send(.imageResponse(.success(.init()))) {
-            $0.isLoadingImage = false
-            $0.imageData = .init()
+            $0.picture = mock
         }
     }
-
-    func test_flow_fetch_image_failure() {
-        store.send(.fetch) {
+    
+    func test_fetch_failure() async {
+        let store = TestStore(
+            initialState: .init(),
+            reducer: APODReducer()
+        )
+        
+        let error = NSError(domain: "test", code: 1)
+        store.dependencies.apiClient.apod = { AstronomyPicture.mockImage() }
+        
+        await store.send(.fetch) {
             $0.isLoading = true
         }
-
-        store.send(.response(.success(.mockImage()))) {
+        
+        await store.receive(.response(.failure(error))) {
+            $0.error = .init(error.localizedDescription)
             $0.isLoading = false
-            $0.picture = .mockImage()
-        }
-
-        store.receive(.loadImage) {
-            $0.isLoadingImage = true
-        }
-
-        let mockError: APIClientError = .mock()
-        store.send(.imageResponse(.failure(mockError))) {
-            $0.isLoadingImage = false
-            $0.error = mockError
-        }
-    }
-
-    func test_flow_fetch_video_success() {
-        store.send(.fetch) {
-            $0.isLoading = true
-        }
-
-        store.send(.response(.success(.mockVideo()))) {
-            $0.isLoading = false
-            $0.picture = .mockVideo()
-        }
-
-        // Unimplemented processing video url.
-    }
-
-    func test_flow_fetch_failure() {
-        store.send(.fetch) {
-            $0.isLoading = true
-        }
-
-        let mockError: APIClientError = .mock()
-        store.send(.response(.failure(mockError))) {
-            $0.isLoading = false
-            $0.error = mockError
         }
     }
 }
