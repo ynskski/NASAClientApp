@@ -31,55 +31,57 @@ struct APODView: View {
     @ViewBuilder
     private var content: some View {
         Section (
-            header: Text("Picture")
-                .textCase(nil)
-                .redacted(reason: viewStore.isLoading ? .placeholder : [])
-        ) {
-            if let picture = viewStore.picture {
-                switch picture.mediaTypeEnum {
-                case .image:
-                    AsyncImage(url: .init(string: picture.url)) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                        case let .success(image):
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .onTapGesture {
-                                    isPresentedFullScreenImage = true
+            header: VStack(alignment: .leading) {
+                Text("Picture")
+                    .textCase(nil)
+                    .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                
+                if let picture = viewStore.picture {
+                    switch picture.mediaTypeEnum {
+                    case .image:
+                        AsyncImage(url: .init(string: picture.url)) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                                    .frame(maxWidth: .infinity)
+                            case let .success(image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .onTapGesture {
+                                        isPresentedFullScreenImage = true
+                                    }
+                                    .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
+                                        FullScreenImageView(
+                                            closeButtonTapped: { isPresentedFullScreenImage = false },
+                                            hdImageURL: picture.hdURL.map { URL(string: $0)! },
+                                            image: image
+                                        )
+                                    }
+                            case let .failure(error):
+                                VStack {
+                                    Text("Failed to open:")
+                                    Link(picture.url, destination: URL(string: picture.url)!)
+                                    Text(error.localizedDescription)
                                 }
-                                .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
-                                    FullScreenImageView(
-                                        closeButtonTapped: { isPresentedFullScreenImage = false },
-                                        hdImageURL: picture.hdURL.map { URL(string: $0)! },
-                                        image: image
-                                    )
-                                }
-                        case let .failure(error):
-                            VStack {
-                                Text("Failed to open:")
-                                Link(picture.url, destination: URL(string: picture.url)!)
-                                Text(error.localizedDescription)
+                            @unknown default:
+                                Text("Unexpected error occurred.")
                             }
-                        @unknown default:
-                            Text("Unexpected error occurred.")
                         }
+                    case .video:
+                        WebView(url: .init(string: picture.url)!)
+                            .aspectRatio(contentMode: .fit)
+                    case .unknown:
+                        Text("Unexpected error occurred.")
                     }
-                case .video:
-                    WebView(url: .init(string: picture.url)!)
-                        .aspectRatio(contentMode: .fit)
-                case .unknown:
-                    Text("Unexpected error occurred.")
+                } else if let error = viewStore.error {
+                    errorRetryView(error: error)
+                } else {
+                    ProgressView()
+                        .frame(maxWidth: .infinity)
                 }
-            } else if let error = viewStore.error {
-                errorRetryView(error: error)
-            } else {
-                ProgressView()
-                    .frame(maxWidth: .infinity)
             }
-        }
+        ) {}
 
         Section(
             header: Text("Title")
