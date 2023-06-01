@@ -18,6 +18,7 @@
 		021A57BA269C141100A55AC1 /* NASAClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAClientApp.swift; sourceTree = "<group>"; };
 		021A57BE269C141200A55AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		021A57C1269C141200A55AC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		02BD2B392A28F20F00141B4F /* Features */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Features; sourceTree = "<group>"; };
 		02E5A491270967FE00150E98 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -36,6 +37,7 @@
 		021A57AE269C141100A55AC1 = {
 			isa = PBXGroup;
 			children = (
+				02BD2B392A28F20F00141B4F /* Features */,
 				02E5A491270967FE00150E98 /* README.md */,
 				021A57B9269C141100A55AC1 /* App */,
 				021A57B8269C141100A55AC1 /* Products */,
