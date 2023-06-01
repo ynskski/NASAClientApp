@@ -8,45 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		021A57BB269C141100A55AC1 /* NASAClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57BA269C141100A55AC1 /* NASAClientApp.swift */; };
-		021A57BD269C141100A55AC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57BC269C141100A55AC1 /* ContentView.swift */; };
 		021A57BF269C141200A55AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021A57BE269C141200A55AC1 /* Assets.xcassets */; };
 		021A57C2269C141200A55AC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021A57C1269C141200A55AC1 /* Preview Assets.xcassets */; };
-		021A57CC269C141200A55AC1 /* NASAClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57CB269C141200A55AC1 /* NASAClientTests.swift */; };
-		021A57E4269C155100A55AC1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E3269C155100A55AC1 /* APIClient.swift */; };
-		021A57E6269C17A400A55AC1 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E5269C17A400A55AC1 /* Secret.swift */; };
-		021A57E8269C1E0900A55AC1 /* AstronomyPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */; };
-		021A57ED269C308900A55AC1 /* APODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57EC269C308900A55AC1 /* APODView.swift */; };
-		02698D1B2716BD570039ADEC /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02698D1A2716BD570039ADEC /* FullScreenImageView.swift */; };
-		02ABDB3C26A1C2FB008DDF40 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 02ABDB3B26A1C2FB008DDF40 /* ComposableArchitecture */; };
-		02ABDB3E26A1C51D008DDF40 /* APODReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABDB3D26A1C51D008DDF40 /* APODReducer.swift */; };
-		02BA689B2A21FF0B00DC4B69 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA689A2A21FF0B00DC4B69 /* WebView.swift */; };
+		02BD2B382A28EDA000141B4F /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = 02BD2B372A28EDA000141B4F /* Features */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		021A57C8269C141200A55AC1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 021A57AF269C141100A55AC1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 021A57B6269C141100A55AC1;
-			remoteInfo = NASAClient;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		021A57B7269C141100A55AC1 /* NASAClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASAClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		021A57BA269C141100A55AC1 /* NASAClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAClientApp.swift; sourceTree = "<group>"; };
-		021A57BC269C141100A55AC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		021A57BE269C141200A55AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		021A57C1269C141200A55AC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		021A57C7269C141200A55AC1 /* NASAClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NASAClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		021A57CB269C141200A55AC1 /* NASAClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAClientTests.swift; sourceTree = "<group>"; };
-		021A57E3269C155100A55AC1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		021A57E5269C17A400A55AC1 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
-		021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyPicture.swift; sourceTree = "<group>"; };
-		021A57EC269C308900A55AC1 /* APODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODView.swift; sourceTree = "<group>"; };
-		02698D1A2716BD570039ADEC /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
-		02ABDB3D26A1C51D008DDF40 /* APODReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODReducer.swift; sourceTree = "<group>"; };
-		02BA689A2A21FF0B00DC4B69 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		02E5A491270967FE00150E98 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,14 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02ABDB3C26A1C2FB008DDF40 /* ComposableArchitecture in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		021A57C4269C141200A55AC1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				02BD2B382A28EDA000141B4F /* Features in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,9 +37,9 @@
 			isa = PBXGroup;
 			children = (
 				02E5A491270967FE00150E98 /* README.md */,
-				021A57B9269C141100A55AC1 /* NASAClient */,
-				021A57CA269C141200A55AC1 /* NASAClientTests */,
+				021A57B9269C141100A55AC1 /* App */,
 				021A57B8269C141100A55AC1 /* Products */,
+				02BD2B362A28EDA000141B4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,23 +47,18 @@
 			isa = PBXGroup;
 			children = (
 				021A57B7269C141100A55AC1 /* NASAClient.app */,
-				021A57C7269C141200A55AC1 /* NASAClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		021A57B9269C141100A55AC1 /* NASAClient */ = {
+		021A57B9269C141100A55AC1 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				02BA68992A21FEE700DC4B69 /* Views */,
-				021A57EB269C305F00A55AC1 /* Today */,
-				021A57E2269C153300A55AC1 /* API */,
 				021A57BA269C141100A55AC1 /* NASAClientApp.swift */,
-				021A57BC269C141100A55AC1 /* ContentView.swift */,
 				021A57BE269C141200A55AC1 /* Assets.xcassets */,
 				021A57C0269C141200A55AC1 /* Preview Content */,
 			);
-			path = NASAClient;
+			path = App;
 			sourceTree = "<group>";
 		};
 		021A57C0269C141200A55AC1 /* Preview Content */ = {
@@ -110,40 +69,11 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		021A57CA269C141200A55AC1 /* NASAClientTests */ = {
+		02BD2B362A28EDA000141B4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				021A57CB269C141200A55AC1 /* NASAClientTests.swift */,
 			);
-			path = NASAClientTests;
-			sourceTree = "<group>";
-		};
-		021A57E2269C153300A55AC1 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				021A57E3269C155100A55AC1 /* APIClient.swift */,
-				021A57E5269C17A400A55AC1 /* Secret.swift */,
-				021A57E7269C1E0900A55AC1 /* AstronomyPicture.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		021A57EB269C305F00A55AC1 /* Today */ = {
-			isa = PBXGroup;
-			children = (
-				021A57EC269C308900A55AC1 /* APODView.swift */,
-				02ABDB3D26A1C51D008DDF40 /* APODReducer.swift */,
-				02698D1A2716BD570039ADEC /* FullScreenImageView.swift */,
-			);
-			path = Today;
-			sourceTree = "<group>";
-		};
-		02BA68992A21FEE700DC4B69 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				02BA689A2A21FF0B00DC4B69 /* WebView.swift */,
-			);
-			path = Views;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,29 +93,11 @@
 			);
 			name = NASAClient;
 			packageProductDependencies = (
-				02ABDB3B26A1C2FB008DDF40 /* ComposableArchitecture */,
+				02BD2B372A28EDA000141B4F /* Features */,
 			);
 			productName = NASAClient;
 			productReference = 021A57B7269C141100A55AC1 /* NASAClient.app */;
 			productType = "com.apple.product-type.application";
-		};
-		021A57C6269C141200A55AC1 /* NASAClientTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 021A57DC269C141200A55AC1 /* Build configuration list for PBXNativeTarget "NASAClientTests" */;
-			buildPhases = (
-				021A57C3269C141200A55AC1 /* Sources */,
-				021A57C4269C141200A55AC1 /* Frameworks */,
-				021A57C5269C141200A55AC1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				021A57C9269C141200A55AC1 /* PBXTargetDependency */,
-			);
-			name = NASAClientTests;
-			productName = NASAClientTests;
-			productReference = 021A57C7269C141200A55AC1 /* NASAClientTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -200,10 +112,6 @@
 					021A57B6269C141100A55AC1 = {
 						CreatedOnToolsVersion = 13.0;
 					};
-					021A57C6269C141200A55AC1 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 021A57B6269C141100A55AC1;
-					};
 				};
 			};
 			buildConfigurationList = 021A57B2269C141100A55AC1 /* Build configuration list for PBXProject "NASAClient" */;
@@ -216,14 +124,12 @@
 			);
 			mainGroup = 021A57AE269C141100A55AC1;
 			packageReferences = (
-				02ABDB3A26A1C2FB008DDF40 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 021A57B8269C141100A55AC1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				021A57B6269C141100A55AC1 /* NASAClient */,
-				021A57C6269C141200A55AC1 /* NASAClientTests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,13 +144,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		021A57C5269C141200A55AC1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -252,35 +151,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02698D1B2716BD570039ADEC /* FullScreenImageView.swift in Sources */,
-				021A57E8269C1E0900A55AC1 /* AstronomyPicture.swift in Sources */,
-				021A57ED269C308900A55AC1 /* APODView.swift in Sources */,
-				02ABDB3E26A1C51D008DDF40 /* APODReducer.swift in Sources */,
-				021A57BD269C141100A55AC1 /* ContentView.swift in Sources */,
-				021A57E6269C17A400A55AC1 /* Secret.swift in Sources */,
-				02BA689B2A21FF0B00DC4B69 /* WebView.swift in Sources */,
 				021A57BB269C141100A55AC1 /* NASAClientApp.swift in Sources */,
-				021A57E4269C155100A55AC1 /* APIClient.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		021A57C3269C141200A55AC1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				021A57CC269C141200A55AC1 /* NASAClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		021A57C9269C141200A55AC1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 021A57B6269C141100A55AC1 /* NASAClient */;
-			targetProxy = 021A57C8269C141200A55AC1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		021A57D7269C141200A55AC1 /* Debug */ = {
@@ -406,7 +281,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NASAClient/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = H6T6MUCK9A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -436,7 +311,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NASAClient/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = H6T6MUCK9A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -456,56 +331,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		021A57DD269C141200A55AC1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H6T6MUCK9A;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.ynskski.NASAClientTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NASAClient.app/NASAClient";
-			};
-			name = Debug;
-		};
-		021A57DE269C141200A55AC1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H6T6MUCK9A;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.ynskski.NASAClientTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NASAClient.app/NASAClient";
 			};
 			name = Release;
 		};
@@ -530,33 +355,12 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		021A57DC269C141200A55AC1 /* Build configuration list for PBXNativeTarget "NASAClientTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				021A57DD269C141200A55AC1 /* Debug */,
-				021A57DE269C141200A55AC1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		02ABDB3A26A1C2FB008DDF40 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.54.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		02ABDB3B26A1C2FB008DDF40 /* ComposableArchitecture */ = {
+		02BD2B372A28EDA000141B4F /* Features */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 02ABDB3A26A1C2FB008DDF40 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
+			productName = Features;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,10 +1,4 @@
-//
-//  NASAClientApp.swift
-//  NASAClient
-//
-//  Created by Yunosuke Sakai on 2021/07/12.
-//
-
+import Features
 import SwiftUI
 import XCTestDynamicOverlay
 
@@ -13,7 +7,7 @@ struct NASAClientApp: App {
     var body: some Scene {
         WindowGroup {
             if !_XCTIsTesting {
-                ContentView()
+                AppView()
             }
         }
     }

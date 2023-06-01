@@ -1,21 +1,34 @@
+import API
 import ComposableArchitecture
 import Foundation
 
-struct APODReducer: ReducerProtocol {
-    struct State: Equatable {
+public struct APODReducer: ReducerProtocol {
+    public struct State: Equatable {
         var error: TextState?
         var isLoading = false
         var picture: AstronomyPicture?
+        
+        public init(
+            error: TextState? = nil,
+            isLoading: Bool = false,
+            picture: AstronomyPicture? = nil
+        ) {
+            self.error = error
+            self.isLoading = isLoading
+            self.picture = picture
+        }
     }
     
-    enum Action: Equatable {
+    public enum Action: Equatable {
         case fetch
         case response(TaskResult<AstronomyPicture>)
     }
     
+    public init() {}
+    
     @Dependency(\.apiClient) private var client
     
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action {
         case .fetch:
             state.isLoading = true

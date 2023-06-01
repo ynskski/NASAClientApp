@@ -1,18 +1,18 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct APODView: View {
+public struct APODView: View {
     let store: StoreOf<APODReducer>
     @ObservedObject private var viewStore: ViewStoreOf<APODReducer>
     
     @State private var isPresentedFullScreenImage = false
     
-    init(store: StoreOf<APODReducer>) {
+    public init(store: StoreOf<APODReducer>) {
         self.store = store
         viewStore = .init(store)
     }
 
-    var body: some View {
+    public var body: some View {
         List {
             if let error = viewStore.error {
                 errorRetryView(error: error)

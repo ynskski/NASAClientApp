@@ -2,25 +2,31 @@ import Dependencies
 import Foundation
 import XCTestDynamicOverlay
 
-struct APIClient: Sendable {
-    var apod: @Sendable () async throws -> AstronomyPicture
+public struct APIClient: Sendable {
+    public var apod: @Sendable () async throws -> AstronomyPicture
+    
+    public init(
+        apod: @escaping @Sendable () async throws -> AstronomyPicture
+    ) {
+        self.apod = apod
+    }
 }
 
 extension APIClient: TestDependencyKey {
-    static let testValue = Self(
+    public static let testValue = Self(
         apod: unimplemented("\(Self.self).apod")
     )
 }
 
 extension DependencyValues {
-    var apiClient: APIClient {
+    public var apiClient: APIClient {
         get { self[APIClient.self] }
         set { self[APIClient.self] = newValue }
     }
 }
 
 extension APIClient: DependencyKey {
-    static let liveValue = APIClient(
+    public static let liveValue = APIClient(
         apod: {
             var components = URLComponents(string: "https://api.nasa.gov/planetary/apod")!
             components.queryItems = [

@@ -1,10 +1,3 @@
-//
-//  WebView.swift
-//  NASAClient
-//
-//  Created by YunosukeSakai on 2023/05/27.
-//
-
 import SwiftUI
 import WebKit
 
