@@ -16,6 +16,10 @@ let package = Package(
             targets: ["Features"]
         ),
         .library(
+            name: "Settings",
+            targets: ["Settings"]
+        ),
+        .library(
             name: "Today",
             targets: ["Today"]
         ),
@@ -36,11 +40,22 @@ let package = Package(
         ),
         .target(
             name: "Features",
-            dependencies: ["Today"]
+            dependencies: [
+                "Settings",
+                "Today",
+            ]
         ),
         .testTarget(
             name: "FeaturesTests",
             dependencies: ["Features"]
+        ),
+        .target(
+            name: "Settings",
+            dependencies: []
+        ),
+        .testTarget(
+            name: "SettingsTests",
+            dependencies: ["Settings"]
         ),
         .target(
             name: "Today",
