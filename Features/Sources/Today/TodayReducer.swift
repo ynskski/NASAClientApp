@@ -2,7 +2,7 @@ import API
 import ComposableArchitecture
 import Foundation
 
-public struct APODReducer: ReducerProtocol {
+public struct TodayReducer: ReducerProtocol {
     public struct State: Equatable {
         var error: TextState?
         var isLoading = false

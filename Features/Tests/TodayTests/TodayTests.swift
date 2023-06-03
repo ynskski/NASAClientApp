@@ -8,7 +8,7 @@ final class TodayTests: XCTestCase {
     func test_fetch() async {
         let store = TestStore(
             initialState: .init(),
-            reducer: APODReducer()
+            reducer: TodayReducer()
         )
         
         let mock = AstronomyPicture.mockImage()
@@ -27,7 +27,7 @@ final class TodayTests: XCTestCase {
     func test_fetch_failure() async {
         let store = TestStore(
             initialState: .init(),
-            reducer: APODReducer()
+            reducer: TodayReducer()
         )
         
         let error = NSError(domain: "test", code: 1)

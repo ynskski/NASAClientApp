@@ -4,10 +4,10 @@ import Today
 public struct AppView: View {
     public var body: some View {
         NavigationView {
-            APODView(
+            TodayView(
                 store: .init(
                     initialState: .init(),
-                    reducer: APODReducer()
+                    reducer: TodayReducer()
                 )
             )
         }
