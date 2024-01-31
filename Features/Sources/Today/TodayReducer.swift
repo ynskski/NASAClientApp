@@ -32,7 +32,9 @@ public struct TodayReducer {
     public func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .fetch:
+            state.error = nil
             state.isLoading = true
+            state.picture = nil
             return .run { send in
                 await send(
                     .response(

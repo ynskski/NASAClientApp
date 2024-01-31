@@ -20,6 +20,9 @@ public struct TodayView: View {
                 content
             }
         }
+        .refreshable {
+            viewStore.send(.fetch)
+        }
         .onAppear {
             if viewStore.picture == nil, !viewStore.isLoading {
                 viewStore.send(.fetch)
@@ -31,11 +34,7 @@ public struct TodayView: View {
     @ViewBuilder
     private var content: some View {
         Section (
-            header: VStack(alignment: .leading) {
-                Text("Picture")
-                    .textCase(nil)
-                    .redacted(reason: viewStore.isLoading ? .placeholder : [])
-                
+            header: Group {
                 if let picture = viewStore.picture {
                     switch picture.mediaTypeEnum {
                     case .image:
