@@ -2,7 +2,8 @@ import API
 import ComposableArchitecture
 import Foundation
 
-public struct TodayReducer: ReducerProtocol {
+@Reducer
+public struct TodayReducer {
     public struct State: Equatable {
         var error: TextState?
         var isLoading = false
@@ -28,15 +29,17 @@ public struct TodayReducer: ReducerProtocol {
     
     @Dependency(\.apiClient) private var client
     
-    public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    public func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .fetch:
             state.isLoading = true
-            return .task {
-                await .response(
-                    TaskResult {
-                        try await client.apod()
-                    }
+            return .run { send in
+                await send(
+                    .response(
+                        TaskResult {
+                            try await client.apod()
+                        }
+                    )
                 )
             }
             

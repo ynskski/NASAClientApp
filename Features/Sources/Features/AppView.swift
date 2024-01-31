@@ -8,9 +8,10 @@ public struct AppView: View {
             NavigationView {
                 TodayView(
                     store: .init(
-                        initialState: .init(),
-                        reducer: TodayReducer()
-                    )
+                        initialState: TodayReducer.State()
+                    ) {
+                        TodayReducer()
+                    }
                 )
             }
             .tabItem {

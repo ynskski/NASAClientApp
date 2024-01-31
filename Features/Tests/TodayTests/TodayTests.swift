@@ -7,9 +7,10 @@ import XCTest
 final class TodayTests: XCTestCase {
     func test_fetch() async {
         let store = TestStore(
-            initialState: .init(),
-            reducer: TodayReducer()
-        )
+            initialState: TodayReducer.State()
+        ) {
+            TodayReducer()
+        }
         
         let mock = AstronomyPicture.mockImage()
         store.dependencies.apiClient.apod = { mock }
@@ -26,9 +27,10 @@ final class TodayTests: XCTestCase {
     
     func test_fetch_failure() async {
         let store = TestStore(
-            initialState: .init(),
-            reducer: TodayReducer()
-        )
+            initialState: TodayReducer.State()
+        ) {
+            TodayReducer()
+        }
         
         let error = NSError(domain: "test", code: 1)
         store.dependencies.apiClient.apod = { throw error }

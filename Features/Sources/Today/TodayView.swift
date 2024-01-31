@@ -9,7 +9,7 @@ public struct TodayView: View {
     
     public init(store: StoreOf<TodayReducer>) {
         self.store = store
-        viewStore = .init(store)
+        viewStore = .init(store, observe: { $0 })
     }
 
     public var body: some View {
@@ -153,7 +153,7 @@ struct TodayView_Previews: PreviewProvider {
         NavigationView {
             TodayView(
                 store: .init(
-                    initialState: .init(
+                    initialState: TodayReducer.State(
                         error: nil,
                         isLoading: false,
                         picture: .init(
@@ -165,10 +165,10 @@ struct TodayView_Previews: PreviewProvider {
                             title: "M27: The Dumbbell Nebula",
                             url: "https://apod.nasa.gov/apod/image/2107/M27_Falls_960.jpg"
                         )
-                    ),
-                    reducer: .empty,
-                    environment: ()
-                )
+                    )
+                ) {
+                    EmptyReducer()
+                }
             )
         }
         .previewDisplayName("画像")
@@ -176,7 +176,7 @@ struct TodayView_Previews: PreviewProvider {
         NavigationView {
             TodayView(
                 store: .init(
-                    initialState: .init(
+                    initialState: TodayReducer.State(
                         error: nil,
                         isLoading: false,
                         picture: .init(
@@ -188,10 +188,10 @@ struct TodayView_Previews: PreviewProvider {
                             title: "GW200115: Simulation of a Black Hole Merging with a Neutron Star",
                             url: "https://www.youtube.com/embed/V_Kd4YBNs7c?rel=0"
                         )
-                    ),
-                    reducer: .empty,
-                    environment: ()
-                )
+                    )
+                ) {
+                    EmptyReducer()
+                }
             )
         }
         .previewDisplayName("動画")
