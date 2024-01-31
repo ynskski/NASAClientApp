@@ -63,6 +63,8 @@ public struct TodayView: View {
                                     Link(picture.url, destination: URL(string: picture.url)!)
                                     Text(error.localizedDescription)
                                 }
+                                .font(.subheadline)
+                                .frame(maxWidth: .infinity)
                             @unknown default:
                                 Text("Unexpected error occurred.")
                             }
@@ -80,6 +82,7 @@ public struct TodayView: View {
                         .frame(maxWidth: .infinity)
                 }
             }
+            .textCase(nil)
         ) {}
 
         Section(
