@@ -29,6 +29,8 @@ public struct TodayReducer {
     
     @Dependency(\.apiClient) private var client
     
+    private enum CancelID { case fetch }
+    
     public func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .fetch:
@@ -44,6 +46,7 @@ public struct TodayReducer {
                     )
                 )
             }
+            .cancellable(id: CancelID.fetch)
             
         case let .response(.success(picture)):
             state.isLoading = false
