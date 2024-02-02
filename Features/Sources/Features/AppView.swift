@@ -5,7 +5,7 @@ import Today
 public struct AppView: View {
     public var body: some View {
         TabView {
-            NavigationView {
+            NavigationStack {
                 TodayView(
                     store: .init(
                         initialState: TodayReducer.State()
