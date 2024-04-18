@@ -25,7 +25,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.7.0"),
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.9.0"),
     ],
     targets: [
         .target(
