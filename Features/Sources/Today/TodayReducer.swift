@@ -46,7 +46,7 @@ public struct TodayReducer {
                     )
                 )
             }
-            .cancellable(id: CancelID.fetch)
+            .cancellable(id: CancelID.fetch, cancelInFlight: true)
             
         case let .response(.success(picture)):
             state.isLoading = false
