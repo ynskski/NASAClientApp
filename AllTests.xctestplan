@@ -1,0 +1,45 @@
+{
+  "configurations" : [
+    {
+      "id" : "B7439DEE-0F17-4723-A6C1-27F5CC850280",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Features",
+        "identifier" : "APITests",
+        "name" : "APITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Features",
+        "identifier" : "FeaturesTests",
+        "name" : "FeaturesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Features",
+        "identifier" : "SettingsTests",
+        "name" : "SettingsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Features",
+        "identifier" : "TodayTests",
+        "name" : "TodayTests"
+      }
+    }
+  ],
+  "version" : 1
+}
