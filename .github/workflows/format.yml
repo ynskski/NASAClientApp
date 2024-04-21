@@ -1,12 +1,11 @@
 name: Format
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   format:
-    runs-on: macos-11
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v2
       - name: Install SwiftFormat
