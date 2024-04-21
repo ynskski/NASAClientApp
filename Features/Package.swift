@@ -51,7 +51,7 @@ let package = Package(
         ),
         .target(
             name: "Settings",
-            dependencies: []
+            dependencies: ["API"]
         ),
         .testTarget(
             name: "SettingsTests",

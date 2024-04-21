@@ -1,18 +1,33 @@
+import ComposableArchitecture
 import SwiftUI
 
 struct APIKeyView: View {
+    let store: StoreOf<APIKeyReducer>
+    @ObservedObject private var viewStore: ViewStoreOf<APIKeyReducer>
+    
+    init(store: StoreOf<APIKeyReducer>) {
+        self.store = store
+        viewStore = .init(store, observe: { $0 })
+    }
+    
     var body: some View {
         List {
             Section(footer: link) {
-                TextField("Set your API key", text: .constant(""))
-                    .textFieldStyle(.plain)
+                TextField(
+                    "Set your API key",
+                    text: viewStore.binding(
+                        get: \.apiKeyInput.rawValue,
+                        send: APIKeyReducer.Action.setAPIKeyInput
+                    )
+                )
+                .textFieldStyle(.plain)
             }
         }
         .navigationTitle("API key")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button(action: {}) {
+                Button(action: { viewStore.send(.updateButtonTapped) }) {
                     Text("Update")
                 }
             }
@@ -34,7 +49,13 @@ struct APIKeyView: View {
 struct APIKeyView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            APIKeyView()
+            APIKeyView(
+                store: .init(
+                    initialState: APIKeyReducer.State()
+                ) {
+                    EmptyReducer()
+                }
+            )
         }
     }
 }

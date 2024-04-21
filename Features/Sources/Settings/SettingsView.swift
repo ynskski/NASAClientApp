@@ -4,7 +4,11 @@ public struct SettingsView: View {
     public var body: some View {
         List {
             NavigationLink {
-                APIKeyView()
+                APIKeyView(
+                    store: .init(initialState: APIKeyReducer.State()) {
+                        APIKeyReducer()
+                    }
+                )
             } label: {
                 HStack {
                     RoundedRectangle(cornerRadius: 8)
