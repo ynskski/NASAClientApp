@@ -26,12 +26,13 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.9.0"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.2.0"),
     ],
     targets: [
         .target(
             name: "API",
             dependencies: [
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "Dependencies", package: "swift-dependencies"),
             ]
         ),
         .testTarget(
@@ -51,7 +52,10 @@ let package = Package(
         ),
         .target(
             name: "Settings",
-            dependencies: ["API"]
+            dependencies: [
+                "API",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
         ),
         .testTarget(
             name: "SettingsTests",
@@ -59,7 +63,10 @@ let package = Package(
         ),
         .target(
             name: "Today",
-            dependencies: ["API"]
+            dependencies: [
+                "API",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
         ),
         .testTarget(
             name: "TodayTests",
