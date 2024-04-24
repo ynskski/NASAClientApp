@@ -1,5 +1,7 @@
 # NASAClientApp
 
+[![CI](https://github.com/ski-u/NASAClientApp/actions/workflows/tests.yml/badge.svg)](https://github.com/ski-u/NASAClientApp/actions/workflows/tests.yml)
+
 ## API
 - [NASA Open APIs](https://api.nasa.gov)
 
