@@ -1,6 +1,7 @@
 import API
 import ComposableArchitecture
 import Foundation
+import Models
 
 @Reducer
 public struct TodayReducer {

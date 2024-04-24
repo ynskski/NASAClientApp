@@ -1,5 +1,6 @@
 import API
 import ComposableArchitecture
+import Models
 
 @Reducer
 public struct APIKeyReducer {

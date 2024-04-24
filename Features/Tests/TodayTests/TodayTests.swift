@@ -1,6 +1,7 @@
 import API
 import ComposableArchitecture
 @testable import Today
+import Models
 import XCTest
 
 @MainActor

@@ -16,6 +16,10 @@ let package = Package(
             targets: ["Features"]
         ),
         .library(
+            name: "Models",
+            targets: ["Models"]
+        ),
+        .library(
             name: "Settings",
             targets: ["Settings"]
         ),
@@ -32,6 +36,7 @@ let package = Package(
         .target(
             name: "API",
             dependencies: [
+                "Models",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ]
         ),
@@ -49,6 +54,14 @@ let package = Package(
         .testTarget(
             name: "FeaturesTests",
             dependencies: ["Features"]
+        ),
+        .target(
+            name: "Models",
+            dependencies: []
+        ),
+        .testTarget(
+            name: "ModelsTests",
+            dependencies: ["Models"]
         ),
         .target(
             name: "Settings",

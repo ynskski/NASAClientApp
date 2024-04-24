@@ -39,6 +39,13 @@
         "identifier" : "TodayTests",
         "name" : "TodayTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Features",
+        "identifier" : "ModelsTests",
+        "name" : "ModelsTests"
+      }
     }
   ],
   "version" : 1
