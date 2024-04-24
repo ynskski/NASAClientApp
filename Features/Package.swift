@@ -8,8 +8,8 @@ let package = Package(
     platforms: [.iOS(.v16)],
     products: [
         .library(
-            name: "API",
-            targets: ["API"]
+            name: "APIClient",
+            targets: ["APIClient"]
         ),
         .library(
             name: "Features",
@@ -34,15 +34,15 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "API",
+            name: "APIClient",
             dependencies: [
                 "Models",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ]
         ),
         .testTarget(
-            name: "APITests",
-            dependencies: ["API"]
+            name: "APIClientTests",
+            dependencies: ["APIClient"]
         ),
         .target(
             name: "Features",
@@ -66,7 +66,7 @@ let package = Package(
         .target(
             name: "Settings",
             dependencies: [
-                "API",
+                "APIClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
@@ -77,7 +77,7 @@ let package = Package(
         .target(
             name: "Today",
             dependencies: [
-                "API",
+                "APIClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
