@@ -13,9 +13,10 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
       - name: Run tests
-        run: xcodebuild
-          -project NASAClient.xcodeproj
-          -scheme NASAClient
-          -destination 'platform=iOS Simulator,name=iPhone 15'
-          -skipMacroValidation
-          test
+        run: |
+          xcodebuild \
+            -project NASAClient.xcodeproj \
+            -scheme NASAClient \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -skipMacroValidation \
+            test
