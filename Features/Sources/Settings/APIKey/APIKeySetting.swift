@@ -6,11 +6,17 @@ import Models
 public struct APIKeySetting {
     public struct State: Equatable {
         var apiKeyInput: APIKey
+        var initialAPIKey: APIKey
+        
+        var isEdited: Bool {
+            apiKeyInput != initialAPIKey
+        }
         
         public init(
             apiKeyInput: APIKey = APIClient.apiKey ?? .init(rawValue: "")
         ) {
             self.apiKeyInput = apiKeyInput
+            initialAPIKey = apiKeyInput
         }
     }
     

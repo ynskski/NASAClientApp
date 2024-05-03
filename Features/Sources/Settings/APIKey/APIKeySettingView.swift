@@ -30,6 +30,7 @@ struct APIKeySettingView: View {
                 Button(action: { viewStore.send(.updateButtonTapped) }) {
                     Text("Update")
                 }
+                .disabled(!viewStore.isEdited)
             }
         }
     }
