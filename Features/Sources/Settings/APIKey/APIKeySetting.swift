@@ -7,7 +7,9 @@ public struct APIKeySetting {
     public struct State: Equatable {
         var apiKeyInput: APIKey
         
-        public init(apiKeyInput: APIKey = .init(rawValue: "")) {
+        public init(
+            apiKeyInput: APIKey = APIClient.apiKey ?? .init(rawValue: "")
+        ) {
             self.apiKeyInput = apiKeyInput
         }
     }
