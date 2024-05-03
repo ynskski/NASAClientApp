@@ -27,7 +27,7 @@ extension DependencyValues {
 }
 
 extension APIClient: DependencyKey {
-    private static var apiKey: APIKey?
+    private(set) public static var apiKey: APIKey?
     
     public static let liveValue = APIClient(
         apod: {

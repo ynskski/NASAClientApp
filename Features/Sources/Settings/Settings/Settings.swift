@@ -24,8 +24,8 @@ public struct Settings {
             switch action {
             case let .path(action):
                 switch action {
-                case .element(id: _, action: .apiKeySetting):
-                    state.path.append(.apiKeySetting(APIKeySetting.State()))
+                case let .element(id: id, action: .apiKeySetting(.updateButtonTapped)):
+                    state.path.pop(from: id)
                     return .none
                     
                 default:

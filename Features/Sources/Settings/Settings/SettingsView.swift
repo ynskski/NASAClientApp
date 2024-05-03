@@ -1,3 +1,4 @@
+import APIClient
 import ComposableArchitecture
 import SwiftUI
 
@@ -27,6 +28,11 @@ public struct SettingsView: View {
                             .padding(.trailing, 8)
 
                         Text("API Key")
+                        
+                        Spacer()
+                        
+                        Text(APIClient.apiKey?.rawValue ?? "None")
+                            .foregroundStyle(Color.secondary)
                     }
                 }
                 
