@@ -3,7 +3,7 @@ import ComposableArchitecture
 import Models
 
 @Reducer
-public struct APIKeyReducer {
+public struct APIKeySetting {
     public struct State: Equatable {
         var apiKeyInput: APIKey
         

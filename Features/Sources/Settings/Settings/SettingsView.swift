@@ -4,9 +4,9 @@ public struct SettingsView: View {
     public var body: some View {
         List {
             NavigationLink {
-                APIKeyView(
-                    store: .init(initialState: APIKeyReducer.State()) {
-                        APIKeyReducer()
+                APIKeySettingView(
+                    store: .init(initialState: APIKeySetting.State()) {
+                        APIKeySetting()
                     }
                 )
             } label: {

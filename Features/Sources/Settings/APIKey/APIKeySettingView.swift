@@ -1,11 +1,11 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct APIKeyView: View {
-    let store: StoreOf<APIKeyReducer>
-    @ObservedObject private var viewStore: ViewStoreOf<APIKeyReducer>
+struct APIKeySettingView: View {
+    let store: StoreOf<APIKeySetting>
+    @ObservedObject private var viewStore: ViewStoreOf<APIKeySetting>
     
-    init(store: StoreOf<APIKeyReducer>) {
+    init(store: StoreOf<APIKeySetting>) {
         self.store = store
         viewStore = .init(store, observe: { $0 })
     }
@@ -17,7 +17,7 @@ struct APIKeyView: View {
                     "Set your API key",
                     text: viewStore.binding(
                         get: \.apiKeyInput.rawValue,
-                        send: APIKeyReducer.Action.setAPIKeyInput
+                        send: APIKeySetting.Action.setAPIKeyInput
                     )
                 )
                 .textFieldStyle(.plain)
@@ -49,9 +49,9 @@ struct APIKeyView: View {
 struct APIKeyView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            APIKeyView(
+            APIKeySettingView(
                 store: .init(
-                    initialState: APIKeyReducer.State()
+                    initialState: APIKeySetting.State()
                 ) {
                     EmptyReducer()
                 }
