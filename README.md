@@ -2,6 +2,9 @@
 
 [![CI](https://github.com/ski-u/NASAClientApp/actions/workflows/tests.yml/badge.svg)](https://github.com/ski-u/NASAClientApp/actions/workflows/tests.yml)
 
+> [!note]
+> This is an experimental project to learn iOS app development :apple:
+
 ## API
 - [NASA Open APIs](https://api.nasa.gov)
 
