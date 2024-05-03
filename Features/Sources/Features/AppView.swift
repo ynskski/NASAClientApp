@@ -21,9 +21,13 @@ public struct AppView: View {
                 }
             }
             
-            NavigationView {
-                SettingsView()
-            }
+            SettingsView(
+                store: .init(
+                    initialState: Settings.State()
+                ) {
+                    Settings()
+                }
+            )
             .tabItem {
                 VStack {
                     Image(systemName: "gear")
