@@ -6,7 +6,7 @@
 > This is an experimental project to learn iOS app development :apple:
 
 ## API
-- [NASA Open APIs](https://api.nasa.gov)
+- [NASA APIs](https://api.nasa.gov)
 
 ### [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html)
 - https://github.com/nasa/apod-api
