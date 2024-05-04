@@ -12,8 +12,8 @@ let package = Package(
             targets: ["APIClient"]
         ),
         .library(
-            name: "Features",
-            targets: ["Features"]
+            name: "AppFeature",
+            targets: ["AppFeature"]
         ),
         .library(
             name: "Models",
@@ -45,15 +45,15 @@ let package = Package(
             dependencies: ["APIClient"]
         ),
         .target(
-            name: "Features",
+            name: "AppFeature",
             dependencies: [
                 "Settings",
                 "Today",
             ]
         ),
         .testTarget(
-            name: "FeaturesTests",
-            dependencies: ["Features"]
+            name: "AppFeatureTests",
+            dependencies: ["AppFeature"]
         ),
         .target(
             name: "Models",

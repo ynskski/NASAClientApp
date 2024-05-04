@@ -22,13 +22,6 @@
     {
       "target" : {
         "containerPath" : "container:Features",
-        "identifier" : "FeaturesTests",
-        "name" : "FeaturesTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Features",
         "identifier" : "SettingsTests",
         "name" : "SettingsTests"
       }
@@ -45,6 +38,13 @@
         "containerPath" : "container:Features",
         "identifier" : "ModelsTests",
         "name" : "ModelsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Features",
+        "identifier" : "AppFeatureTests",
+        "name" : "AppFeatureTests"
       }
     }
   ],
