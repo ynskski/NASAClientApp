@@ -40,10 +40,6 @@ let package = Package(
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ]
         ),
-        .testTarget(
-            name: "APIClientTests",
-            dependencies: ["APIClient"]
-        ),
         .target(
             name: "AppFeature",
             dependencies: [
