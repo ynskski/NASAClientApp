@@ -5,7 +5,11 @@ import SwiftUI
 struct NASAClientApp: App {
     var body: some Scene {
         WindowGroup {
-            AppView()
+            AppView(
+                store: .init(initialState: .init()) {
+                    AppReducer()
+                }
+            )
         }
     }
 }

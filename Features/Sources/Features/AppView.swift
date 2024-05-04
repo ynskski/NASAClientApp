@@ -1,18 +1,19 @@
+import ComposableArchitecture
 import Settings
 import SwiftUI
 import Today
 
 public struct AppView: View {
+    var store: StoreOf<AppReducer>
+    
+    public init(store: StoreOf<AppReducer>) {
+        self.store = store
+    }
+    
     public var body: some View {
         TabView {
             NavigationStack {
-                TodayView(
-                    store: .init(
-                        initialState: TodayReducer.State()
-                    ) {
-                        TodayReducer()
-                    }
-                )
+                TodayView(store: store.scope(state: \.today, action: \.today))
             }
             .tabItem {
                 VStack {
@@ -21,13 +22,7 @@ public struct AppView: View {
                 }
             }
             
-            SettingsView(
-                store: .init(
-                    initialState: Settings.State()
-                ) {
-                    Settings()
-                }
-            )
+            SettingsView(store: store.scope(state: \.settings, action: \.settings))
             .tabItem {
                 VStack {
                     Image(systemName: "gear")
@@ -36,6 +31,4 @@ public struct AppView: View {
             }
         }
     }
-    
-    public init() {}
 }
