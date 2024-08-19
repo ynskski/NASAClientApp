@@ -4,9 +4,9 @@ import SwiftUI
 public struct TodayView: View {
     let store: StoreOf<TodayReducer>
     @ObservedObject private var viewStore: ViewStoreOf<TodayReducer>
-    
+
     @State private var isPresentedFullScreenImage = false
-    
+
     public init(store: StoreOf<TodayReducer>) {
         self.store = store
         viewStore = .init(store, observe: { $0 })
@@ -30,10 +30,10 @@ public struct TodayView: View {
         }
         .navigationTitle("Today")
     }
-    
+
     @ViewBuilder
     private var content: some View {
-        Section (
+        Section(
             header: Group {
                 if let picture = viewStore.picture {
                     switch picture.mediaTypeEnum {

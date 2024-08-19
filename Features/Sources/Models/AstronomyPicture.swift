@@ -8,7 +8,7 @@ public struct AstronomyPicture: Decodable, Equatable, Sendable {
     public var mediaType: String
     public var title: String
     public var url: String
-    
+
     public init(
         copyright: String? = nil,
         date: String,

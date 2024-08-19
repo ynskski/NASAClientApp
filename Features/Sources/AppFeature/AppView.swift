@@ -5,11 +5,11 @@ import Today
 
 public struct AppView: View {
     var store: StoreOf<AppReducer>
-    
+
     public init(store: StoreOf<AppReducer>) {
         self.store = store
     }
-    
+
     public var body: some View {
         TabView {
             NavigationStack {
@@ -21,14 +21,14 @@ public struct AppView: View {
                     Text("Today")
                 }
             }
-            
+
             SettingsView(store: store.scope(state: \.settings, action: \.settings))
-            .tabItem {
-                VStack {
-                    Image(systemName: "gear")
-                    Text("Settings")
+                .tabItem {
+                    VStack {
+                        Image(systemName: "gear")
+                        Text("Settings")
+                    }
                 }
-            }
         }
     }
 }

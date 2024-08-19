@@ -9,7 +9,7 @@ public struct TodayReducer {
         var error: TextState?
         var isLoading = false
         var picture: AstronomyPicture?
-        
+
         public init(
             error: TextState? = nil,
             isLoading: Bool = false,
@@ -20,18 +20,18 @@ public struct TodayReducer {
             self.picture = picture
         }
     }
-    
+
     public enum Action: Equatable {
         case fetch
         case response(TaskResult<AstronomyPicture>)
     }
-    
+
     public init() {}
-    
+
     @Dependency(\.apiClient) private var client
-    
+
     private enum CancelID { case fetch }
-    
+
     public func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .fetch:
@@ -48,12 +48,12 @@ public struct TodayReducer {
                 )
             }
             .cancellable(id: CancelID.fetch, cancelInFlight: true)
-            
+
         case let .response(.success(picture)):
             state.isLoading = false
             state.picture = picture
             return .none
-            
+
         case let .response(.failure(error)):
             state.error = .init(error.localizedDescription)
             state.isLoading = false
