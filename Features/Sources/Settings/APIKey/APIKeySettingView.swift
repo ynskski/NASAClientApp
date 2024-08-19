@@ -4,12 +4,12 @@ import SwiftUI
 struct APIKeySettingView: View {
     let store: StoreOf<APIKeySetting>
     @ObservedObject private var viewStore: ViewStoreOf<APIKeySetting>
-    
+
     init(store: StoreOf<APIKeySetting>) {
         self.store = store
         viewStore = .init(store, observe: { $0 })
     }
-    
+
     var body: some View {
         List {
             Section(footer: link) {
@@ -34,7 +34,7 @@ struct APIKeySettingView: View {
             }
         }
     }
-    
+
     private var link: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("You can generate your API key on:")
