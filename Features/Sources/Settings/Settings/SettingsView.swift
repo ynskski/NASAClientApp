@@ -4,11 +4,11 @@ import SwiftUI
 
 public struct SettingsView: View {
     @Bindable var store: StoreOf<Settings>
-    
+
     public init(store: StoreOf<Settings>) {
         self.store = store
     }
-    
+
     public var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
             List {
@@ -28,14 +28,14 @@ public struct SettingsView: View {
                             .padding(.trailing, 8)
 
                         Text("API Key")
-                        
+
                         Spacer()
-                        
+
                         Text(APIClient.apiKey?.rawValue ?? "None")
                             .foregroundStyle(Color.secondary)
                     }
                 }
-                
+
                 NavigationLink {
                     LanguageView()
                 } label: {
