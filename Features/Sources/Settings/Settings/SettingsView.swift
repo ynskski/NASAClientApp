@@ -31,7 +31,7 @@ public struct SettingsView: View {
 
                         Spacer()
 
-                        Text(APIClient.apiKey?.rawValue ?? "None")
+                        Text(APIClient.apiKey?.rawValue.masked ?? "None")
                             .foregroundStyle(Color.secondary)
                     }
                 }
