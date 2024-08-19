@@ -4,8 +4,8 @@ import Models
 @testable import Today
 import XCTest
 
-@MainActor
 final class TodayTests: XCTestCase {
+    @MainActor
     func test_fetch() async {
         let store = TestStore(
             initialState: TodayReducer.State()
@@ -26,6 +26,7 @@ final class TodayTests: XCTestCase {
         }
     }
 
+    @MainActor
     func test_fetch_failure() async {
         let store = TestStore(
             initialState: TodayReducer.State()
