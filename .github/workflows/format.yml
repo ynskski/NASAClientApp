@@ -19,4 +19,4 @@ jobs:
           title: Run SwiftFormat
           reviewers: ski-u
           branch: run-swiftformat
-          author: actions-user 65916846+actions-user@users.noreply.github.com
+          author: actions-user <65916846+actions-user@users.noreply.github.com>
