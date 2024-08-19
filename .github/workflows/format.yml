@@ -18,3 +18,4 @@ jobs:
           delete-branch: true
           title: Run SwiftFormat
           reviewers: ski-u
+          branch: run-swiftformat
