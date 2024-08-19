@@ -16,3 +16,16 @@
 
 ## Reference
 - [The Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture)
+
+## Environment
+```
+❯ swift --version
+swift-driver version: 1.90.11.1 Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+Target: arm64-apple-macosx14.0
+```
+
+```
+❯ xcodebuild -version
+Xcode 15.4
+Build version 15F31d
+```
