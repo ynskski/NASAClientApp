@@ -5,7 +5,7 @@ import Models
 import XCTestDynamicOverlay
 
 @DependencyClient
-public struct APIClient {
+public struct APIClient: Sendable {
     public var apod: @Sendable () async throws -> AstronomyPicture
 }
 
@@ -23,7 +23,7 @@ public extension DependencyValues {
 }
 
 extension APIClient: DependencyKey {
-    public private(set) static var apiKey: APIKey?
+    nonisolated(unsafe) public private(set) static var apiKey: APIKey?
 
     public static let liveValue = APIClient(
         apod: {

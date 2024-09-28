@@ -4,7 +4,7 @@ import Foundation
 import Models
 
 @Reducer
-public struct TodayReducer {
+public struct TodayReducer: Sendable {
     public struct State: Equatable {
         var error: TextState?
         var isLoading = false
