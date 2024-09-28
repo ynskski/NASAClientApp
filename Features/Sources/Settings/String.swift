@@ -1,6 +1,6 @@
 extension String {
     var masked: String? {
-        guard let first = self.first else {
+        guard let first = first else {
             return nil
         }
         return "\(first)***"
