@@ -2,7 +2,7 @@ import Dependencies
 import DependenciesMacros
 import Foundation
 import Models
-import XCTestDynamicOverlay
+import IssueReporting
 
 @DependencyClient
 public struct APIClient: Sendable {
