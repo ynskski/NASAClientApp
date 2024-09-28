@@ -21,9 +21,9 @@ public struct TodayReducer: Sendable {
         }
     }
 
-    public enum Action: Equatable {
+    public enum Action {
         case fetch
-        case response(TaskResult<AstronomyPicture>)
+        case response(Result<AstronomyPicture, any Error>)
     }
 
     public init() {}
@@ -41,7 +41,7 @@ public struct TodayReducer: Sendable {
             return .run { send in
                 await send(
                     .response(
-                        TaskResult {
+                        Result {
                             try await client.apod()
                         }
                     )

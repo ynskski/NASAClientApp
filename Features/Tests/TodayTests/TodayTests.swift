@@ -20,7 +20,7 @@ final class TodayTests: XCTestCase {
             $0.isLoading = true
         }
 
-        await store.receive(.response(.success(mock))) {
+        await store.receive(\.response.success) {
             $0.isLoading = false
             $0.picture = mock
         }
@@ -41,7 +41,7 @@ final class TodayTests: XCTestCase {
             $0.isLoading = true
         }
 
-        await store.receive(.response(.failure(error))) {
+        await store.receive(\.response.failure) {
             $0.error = .init(error.localizedDescription)
             $0.isLoading = false
         }
