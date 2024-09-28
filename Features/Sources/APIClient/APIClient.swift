@@ -1,16 +1,12 @@
 import Dependencies
+import DependenciesMacros
 import Foundation
 import Models
 import XCTestDynamicOverlay
 
-public struct APIClient: Sendable {
+@DependencyClient
+public struct APIClient {
     public var apod: @Sendable () async throws -> AstronomyPicture
-
-    public init(
-        apod: @escaping @Sendable () async throws -> AstronomyPicture
-    ) {
-        self.apod = apod
-    }
 }
 
 extension APIClient: TestDependencyKey {
