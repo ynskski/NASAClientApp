@@ -1,8 +1,8 @@
 import Dependencies
 import DependenciesMacros
 import Foundation
-import Models
 import IssueReporting
+import Models
 
 @DependencyClient
 public struct APIClient: Sendable {
@@ -23,7 +23,7 @@ public extension DependencyValues {
 }
 
 extension APIClient: DependencyKey {
-    nonisolated(unsafe) public private(set) static var apiKey: APIKey?
+    public private(set) nonisolated(unsafe) static var apiKey: APIKey?
 
     public static let liveValue = APIClient(
         apod: {
