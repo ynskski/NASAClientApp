@@ -1,12 +1,14 @@
 import APIClient
 import ComposableArchitecture
+import Foundation
 import Models
+import Testing
 @testable import Today
-import XCTest
 
-final class TodayTests: XCTestCase {
-    @MainActor
-    func test_fetch() async {
+@MainActor
+struct TodayTests {
+    @Test
+    func successfulFetch() async throws {
         let store = TestStore(
             initialState: TodayReducer.State()
         ) {
@@ -25,9 +27,9 @@ final class TodayTests: XCTestCase {
             $0.picture = mock
         }
     }
-
-    @MainActor
-    func test_fetch_failure() async {
+    
+    @Test
+    func failedFetch() async throws {
         let store = TestStore(
             initialState: TodayReducer.State()
         ) {
