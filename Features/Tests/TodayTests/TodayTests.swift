@@ -16,7 +16,7 @@ struct TodayTests {
         }
 
         let mock = AstronomyPicture.mockImage()
-        store.dependencies.apiClient.apod = { mock }
+        store.dependencies.apiClient.apod = { mock}
 
         await store.send(.fetch) {
             $0.isLoading = true
