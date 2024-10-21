@@ -14,9 +14,8 @@ jobs:
         run: swiftformat --verbose .
       - uses: peter-evans/create-pull-request@v6
         with:
-          commit-message: Run SwiftFormat
+          commit-message: run SwiftFormat
           delete-branch: true
           title: Run SwiftFormat
           reviewers: ski-u
           branch: run-swiftformat
-          author: actions-user <65916846+actions-user@users.noreply.github.com>
