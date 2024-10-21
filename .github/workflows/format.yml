@@ -1,4 +1,4 @@
-name: SwiftFormat
+name: swift-format
 
 on:
   push:
@@ -11,14 +11,14 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v2
-      - name: Install SwiftFormat
-        run: brew install swiftformat
-      - name: Run SwiftFormat
-        run: swiftformat --verbose .
+      - name: Install swift-format
+        run: brew install swift-format
+      - name: Run swift-format
+        run: swift-format . --in-place --recursive --configuration .swift-format
       - uses: peter-evans/create-pull-request@v6
         with:
-          commit-message: run SwiftFormat
+          commit-message: run swift-format
           delete-branch: true
-          title: Run SwiftFormat
+          title: Run swift-format
           reviewers: ski-u
-          branch: run-swiftformat
+          branch: run-swift-format
