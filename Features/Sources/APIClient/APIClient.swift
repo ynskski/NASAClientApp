@@ -10,9 +10,7 @@ public struct APIClient: Sendable {
 }
 
 extension APIClient: TestDependencyKey {
-    public static let testValue = Self(
-        apod: unimplemented("\(Self.self).apod")
-    )
+    public static let testValue = Self()
 }
 
 public extension DependencyValues {
