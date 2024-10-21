@@ -27,7 +27,7 @@ extension APIClient: DependencyKey {
         apod: {
             var components = URLComponents(string: "https://api.nasa.gov/planetary/apod")!
             components.queryItems = [
-                URLQueryItem(name: "api_key", value: apiKey?.rawValue),
+                URLQueryItem(name: "api_key", value: apiKey?.rawValue)
             ]
 
             let (data, _) = try await URLSession.shared.data(from: components.url!)
