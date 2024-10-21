@@ -27,7 +27,7 @@ struct TodayTests {
             $0.picture = mock
         }
     }
-    
+
     @Test
     func failedFetch() async throws {
         let store = TestStore(
