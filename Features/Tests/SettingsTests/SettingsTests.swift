@@ -1,5 +1,6 @@
-import XCTest
+import Testing
 
 @testable import Settings
 
-final class SettingsTests: XCTestCase {}
+@MainActor
+struct SettingsTests {}

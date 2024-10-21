@@ -1,5 +1,6 @@
-import XCTest
+import Testing
 
 @testable import AppFeature
 
-final class AppFeatureTests: XCTestCase {}
+@MainActor
+struct AppFeatureTests {}
