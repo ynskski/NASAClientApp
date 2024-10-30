@@ -19,13 +19,13 @@
 
 ## Environment
 ```
-❯ swift --version
-swift-driver version: 1.115 Apple Swift version 6.0 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+❯ swift --version                                                    
+swift-driver version: 1.115 Apple Swift version 6.0.2 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
 Target: arm64-apple-macosx15.0
 ```
 
 ```
 ❯ xcodebuild -version
-Xcode 16.0
-Build version 16A242d
+Xcode 16.1
+Build version 16B40
 ```
