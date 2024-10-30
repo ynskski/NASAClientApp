@@ -31,6 +31,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.15.1"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.4.1"),
+        .package(url: "https://github.com/konomae/swift-local-date.git", from: "0.4.1"),
     ],
     targets: [
         .target(
@@ -54,7 +55,9 @@ let package = Package(
         ),
         .target(
             name: "Models",
-            dependencies: []
+            dependencies: [
+                .product(name: "LocalDate", package: "swift-local-date"),
+            ]
         ),
         .testTarget(
             name: "ModelsTests",
