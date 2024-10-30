@@ -1,6 +1,7 @@
 import APIClient
 import ComposableArchitecture
 import Foundation
+import LocalDate
 import Models
 import Testing
 
@@ -55,24 +56,24 @@ extension AstronomyPicture {
     static func mockImage() -> Self {
         .init(
             copyright: "copyright",
-            date: "2021-07-12",
+            date: LocalDate(year: 2012, month: 7, day: 12),
             explanation: "explanation",
-            hdURL: "hdURL",
-            mediaType: "image",
+            hdURL: URL(string: "https://example.com/hd-url")!,
+            mediaType: .image,
             title: "title",
-            url: "url"
+            url: URL(string: "https://example.com/url")!
         )
     }
 
     static func mockVideo() -> Self {
         .init(
             copyright: "copyright",
-            date: "2021-07-12",
+            date: LocalDate(year: 2012, month: 7, day: 12),
             explanation: "explanation",
             hdURL: nil,
-            mediaType: "video",
+            mediaType: .video,
             title: "title",
-            url: "url"
+            url: URL(string: "https://example.com")!
         )
     }
 }

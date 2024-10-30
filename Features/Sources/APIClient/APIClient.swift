@@ -31,7 +31,9 @@ extension APIClient: DependencyKey {
             ]
 
             let (data, _) = try await URLSession.shared.data(from: components.url!)
-            return try JSONDecoder().decode(AstronomyPicture.self, from: data)
+            return try AstronomyPicture(
+                response: JSONDecoder().decode(AstronomyPicture.Response.self, from: data)
+            )
         }
     )
 
