@@ -7,8 +7,8 @@ import Testing
 @MainActor
 struct AstronomyPictureTests {
     @Test
-    func initFromResponse() {
-        let response = AstronomyPicture.Response(
+    func initFromPayload() {
+        let payload = AstronomyPicture.Payload(
             copyright: "copyright",
             date: "2024-01-01",
             explanation: "explanation",
@@ -28,6 +28,6 @@ struct AstronomyPictureTests {
             url: URL(string: "https://example.com/url")!
         )
 
-        #expect(AstronomyPicture(response: response) == model)
+        #expect(AstronomyPicture(payload: payload) == model)
     }
 }

@@ -32,7 +32,7 @@ extension APIClient: DependencyKey {
 
             let (data, _) = try await URLSession.shared.data(from: components.url!)
             return try AstronomyPicture(
-                response: JSONDecoder().decode(AstronomyPicture.Response.self, from: data)
+                payload: JSONDecoder().decode(AstronomyPicture.Payload.self, from: data)
             )
         }
     )

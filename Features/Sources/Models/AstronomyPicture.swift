@@ -28,21 +28,21 @@ public struct AstronomyPicture: Equatable, Sendable {
         self.url = url
     }
 
-    public init(response: Response) {
+    public init(payload: Payload) {
         self.init(
-            copyright: response.copyright,
-            date: try? LocalDate(from: response.date),
-            explanation: response.explanation,
-            hdURL: response.hdURL.map { URL(string: $0)! },
-            mediaType: MediaType(string: response.mediaType),
-            title: response.title,
-            url: URL(string: response.url)
+            copyright: payload.copyright,
+            date: try? LocalDate(from: payload.date),
+            explanation: payload.explanation,
+            hdURL: payload.hdURL.map { URL(string: $0)! },
+            mediaType: MediaType(string: payload.mediaType),
+            title: payload.title,
+            url: URL(string: payload.url)
         )
     }
 }
 
 extension AstronomyPicture {
-    public struct Response: Decodable {
+    public struct Payload: Decodable {
         public var copyright: String?
         public var date: String
         public var explanation: String
