@@ -12,6 +12,10 @@ let package = Package(
             targets: ["APIClient"]
         ),
         .library(
+            name: "APIClientLive",
+            targets: ["APIClientLive"]
+        ),
+        .library(
             name: "AppFeature",
             targets: ["AppFeature"]
         ),
@@ -43,6 +47,12 @@ let package = Package(
             ]
         ),
         .target(
+            name: "APIClientLive",
+            dependencies: [
+                "APIClient"
+            ]
+        ),
+        .target(
             name: "AppFeature",
             dependencies: [
                 "Settings",
@@ -66,7 +76,7 @@ let package = Package(
         .target(
             name: "Settings",
             dependencies: [
-                "APIClient",
+                "APIClientLive",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
