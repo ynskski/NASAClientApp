@@ -27,11 +27,11 @@ public struct SettingsView: View {
                                         .foregroundColor(.white)
                                 }
                                 .padding(.trailing, 8)
-                            
+
                             Text("API Key")
-                            
+
                             Spacer()
-                            
+
                             Text(APIClient.apiKey?.rawValue.masked ?? "None")
                                 .foregroundStyle(Color.secondary)
                         }
@@ -51,11 +51,11 @@ public struct SettingsView: View {
                                         .foregroundColor(.white)
                                 }
                                 .padding(.trailing, 8)
-                            
+
                             Text("Language")
                         }
                     }
-                    
+
                     NavigationLink {
                         Text("Appearance")
                     } label: {
@@ -68,7 +68,7 @@ public struct SettingsView: View {
                                         .foregroundColor(.white)
                                 }
                                 .padding(.trailing, 8)
-                            
+
                             Text("Appearance")
                         }
                     }
