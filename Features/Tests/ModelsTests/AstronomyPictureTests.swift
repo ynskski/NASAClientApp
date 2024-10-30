@@ -17,7 +17,7 @@ struct AstronomyPictureTests {
             title: "title",
             url: "https://example.com/url"
         )
-        
+
         let model = AstronomyPicture(
             copyright: "copyright",
             date: LocalDate(year: 2024, month: 1, day: 1),
@@ -27,7 +27,7 @@ struct AstronomyPictureTests {
             title: "title",
             url: URL(string: "https://example.com/url")!
         )
-        
+
         #expect(AstronomyPicture(response: response) == model)
     }
 }

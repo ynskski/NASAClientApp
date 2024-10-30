@@ -56,7 +56,7 @@ let package = Package(
         .target(
             name: "Models",
             dependencies: [
-                .product(name: "LocalDate", package: "swift-local-date"),
+                .product(name: "LocalDate", package: "swift-local-date")
             ]
         ),
         .testTarget(

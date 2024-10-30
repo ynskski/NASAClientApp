@@ -3,7 +3,7 @@ public enum MediaType: Sendable {
     case video
     case other
     case unknown
-    
+
     init(string: String) {
         switch string {
         case "image":
