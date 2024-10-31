@@ -33,6 +33,7 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/cybozu/LicenseList.git", exact: "1.1.1"),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.15.1"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.4.1"),
         .package(url: "https://github.com/konomae/swift-local-date.git", from: "0.4.1"),
@@ -78,6 +79,7 @@ let package = Package(
             dependencies: [
                 "APIClientLive",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "LicenseList", package: "LicenseList"),
             ]
         ),
         .testTarget(

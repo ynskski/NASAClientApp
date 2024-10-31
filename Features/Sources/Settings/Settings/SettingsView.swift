@@ -1,5 +1,6 @@
 import APIClient
 import ComposableArchitecture
+import LicenseList
 import SwiftUI
 
 public struct SettingsView: View {
@@ -70,6 +71,27 @@ public struct SettingsView: View {
                                 .padding(.trailing, 8)
 
                             Text("Appearance")
+                        }
+                    }
+                }
+                
+                Section {
+                    NavigationLink {
+                        LicenseListView()
+                            .licenseViewStyle(.withRepositoryAnchorLink)
+                            .navigationTitle(.init("Acknowledgement"))
+                    } label: {
+                        HStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.gray)
+                                .overlay {
+                                    Image(systemName: "wrench.and.screwdriver")
+                                        .foregroundColor(.white)
+                                }
+                                .padding(.trailing, 8)
+
+                            Text("Acknowledgement")
                         }
                     }
                 }
