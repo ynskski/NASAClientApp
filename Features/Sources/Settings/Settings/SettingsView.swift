@@ -20,16 +20,11 @@ public struct SettingsView: View {
                         )
                     ) {
                         HStack {
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.yellow)
-                                .overlay {
-                                    Image(systemName: "key.fill")
-                                        .foregroundColor(.white)
-                                }
-                                .padding(.trailing, 8)
-
-                            Text("API Key")
+                            NavigationLinkLabel(
+                                color: .yellow,
+                                text: Text("API Key"),
+                                icon: Image(systemName: "key.fill")
+                            )
 
                             Spacer()
 
@@ -43,35 +38,21 @@ public struct SettingsView: View {
                     NavigationLink {
                         LanguageView()
                     } label: {
-                        HStack {
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.green)
-                                .overlay {
-                                    Image(systemName: "globe")
-                                        .foregroundColor(.white)
-                                }
-                                .padding(.trailing, 8)
-
-                            Text("Language")
-                        }
+                        NavigationLinkLabel(
+                            color: .green,
+                            text: Text("Language"),
+                            icon: Image(systemName: "globe")
+                        )
                     }
 
                     NavigationLink {
                         Text("Appearance")
                     } label: {
-                        HStack {
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.cyan)
-                                .overlay {
-                                    Image(systemName: "circle.lefthalf.filled")
-                                        .foregroundColor(.white)
-                                }
-                                .padding(.trailing, 8)
-
-                            Text("Appearance")
-                        }
+                        NavigationLinkLabel(
+                            color: .cyan,
+                            text: Text("Appearance"),
+                            icon: Image(systemName: "circle.lefthalf.filled")
+                        )
                     }
                 }
                 
@@ -81,18 +62,11 @@ public struct SettingsView: View {
                             .licenseViewStyle(.withRepositoryAnchorLink)
                             .navigationTitle(.init("Acknowledgement"))
                     } label: {
-                        HStack {
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.gray)
-                                .overlay {
-                                    Image(systemName: "wrench.and.screwdriver")
-                                        .foregroundColor(.white)
-                                }
-                                .padding(.trailing, 8)
-
-                            Text("Acknowledgement")
-                        }
+                        NavigationLinkLabel(
+                            color: .gray,
+                            text: Text("Acknowledgement"),
+                            icon: Image(systemName: "wrench.and.screwdriver")
+                        )
                     }
                 }
             }
