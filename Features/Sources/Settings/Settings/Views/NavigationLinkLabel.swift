@@ -4,7 +4,7 @@ struct NavigationLinkLabel: View {
     let color: Color
     let text: Text
     let icon: Image
-    
+
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 8)
