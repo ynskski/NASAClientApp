@@ -55,7 +55,7 @@ public struct SettingsView: View {
                         )
                     }
                 }
-                
+
                 Section {
                     NavigationLink {
                         LicenseListView()
