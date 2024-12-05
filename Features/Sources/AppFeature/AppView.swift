@@ -1,10 +1,13 @@
 import ComposableArchitecture
+import Models
 import Settings
 import SwiftUI
 import Today
 
 public struct AppView: View {
     var store: StoreOf<AppReducer>
+
+    @Shared(.appStorage("colorScheme")) var userColorScheme = UserColorScheme.light
 
     public init(store: StoreOf<AppReducer>) {
         self.store = store
@@ -30,5 +33,6 @@ public struct AppView: View {
                     }
                 }
         }
+        .preferredColorScheme(userColorScheme.colorScheme)
     }
 }

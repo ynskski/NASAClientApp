@@ -46,7 +46,7 @@ public struct SettingsView: View {
                     }
 
                     NavigationLink {
-                        Text("Appearance")
+                        AppearanceView()
                     } label: {
                         NavigationLinkLabel(
                             color: .cyan,
