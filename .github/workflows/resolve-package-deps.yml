@@ -1,0 +1,19 @@
+name: resolve-package-dependencies
+
+on:
+  pull_request:
+    paths:
+      - "Features/Package.swift"
+
+jobs:
+  resolve-package-deps:
+    runs-on: macos-15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve package dependencies
+        run: xcodebuild -resolvePackageDependencies
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Resolve package dependencies
