@@ -15,8 +15,8 @@
     {
       "target" : {
         "containerPath" : "container:Features",
-        "identifier" : "SettingsTests",
-        "name" : "SettingsTests"
+        "identifier" : "ModelsTests",
+        "name" : "ModelsTests"
       }
     },
     {
@@ -28,9 +28,9 @@
     },
     {
       "target" : {
-        "containerPath" : "container:Features",
-        "identifier" : "ModelsTests",
-        "name" : "ModelsTests"
+        "containerPath" : "container:NASAClient.xcodeproj",
+        "identifier" : "02DE09262D0DCB9D0071B411",
+        "name" : "NASAClientTests"
       }
     },
     {
@@ -38,6 +38,13 @@
         "containerPath" : "container:Features",
         "identifier" : "AppFeatureTests",
         "name" : "AppFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Features",
+        "identifier" : "SettingsTests",
+        "name" : "SettingsTests"
       }
     }
   ],
