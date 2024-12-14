@@ -1,7 +1,5 @@
 import Dependencies
 import DependenciesMacros
-import Foundation
-import IssueReporting
 import Models
 
 @DependencyClient
