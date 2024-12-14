@@ -7,7 +7,7 @@ import Today
 public struct AppView: View {
     var store: StoreOf<AppReducer>
 
-    @Shared(.appStorage("colorScheme")) var userColorScheme = UserColorScheme.light
+    @Shared(.appStorage("colorScheme")) var userColorScheme = UserColorScheme.system
 
     public init(store: StoreOf<AppReducer>) {
         self.store = store
