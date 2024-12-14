@@ -11,14 +11,10 @@ extension APIKeyClient: DependencyKey {
         
         return .init(
             getKey: {
-                try keychain.get("APIKey").map(APIKey.init(rawValue:))
+                keychain["APIKey"].map(APIKey.init(rawValue:))
             },
             setKey: {
-                if let key = $0 {
-                    try keychain.set(key.rawValue, key: "APIKey")
-                } else {
-                    try keychain.remove("APIKey")
-                }
+                keychain.accessibility(.whenUnlockedThisDeviceOnly)["APIKey"] = $0?.rawValue
             }
         )
     }

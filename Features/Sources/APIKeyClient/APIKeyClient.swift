@@ -4,8 +4,8 @@ import Models
 
 @DependencyClient
 public struct APIKeyClient: Sendable {
-    public var getKey: @Sendable () throws -> APIKey?
-    public var setKey: @Sendable (APIKey?) throws -> Void
+    public var getKey: @Sendable () -> APIKey?
+    public var setKey: @Sendable (APIKey?) -> Void
 }
 
 extension APIKeyClient: TestDependencyKey {

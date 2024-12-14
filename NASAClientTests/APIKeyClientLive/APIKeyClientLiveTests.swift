@@ -12,14 +12,14 @@ struct APIKeyClientLiveTests {
     }
     
     @Test
-    func liveValue() throws {
+    func liveValue() {
         let client = APIKeyClient.liveValue(service: "test")
         let key = APIKey(rawValue: "key")
         
-        try client.setKey(key)
-        #expect(try client.getKey() == key)
+        client.setKey(key)
+        #expect(client.getKey() == key)
         
-        try client.setKey(nil)
-        #expect(try client.getKey() == nil)
+        client.setKey(nil)
+        #expect(client.getKey() == nil)
     }
 }
