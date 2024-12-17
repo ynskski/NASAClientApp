@@ -28,7 +28,7 @@ public struct SettingsView: View {
 
                             Spacer()
 
-                            Text(APIClient.apiKey?.rawValue.masked ?? "None")
+                            Text(store.apiKey.rawValue.masked ?? "None")
                                 .foregroundStyle(Color.secondary)
                         }
                     }
@@ -76,6 +76,9 @@ public struct SettingsView: View {
             case let .apiKeySetting(store):
                 APIKeySettingView(store: store)
             }
+        }
+        .onAppear {
+            store.send(.onAppear)
         }
     }
 }

@@ -33,6 +33,9 @@ struct APIKeySettingView: View {
                 .disabled(!viewStore.isEdited)
             }
         }
+        .onAppear {
+            viewStore.send(.onAppear)
+        }
     }
 
     private var link: some View {

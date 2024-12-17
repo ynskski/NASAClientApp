@@ -102,6 +102,7 @@ let package = Package(
             name: "Settings",
             dependencies: [
                 "APIClientLive",
+                "APIKeyClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 .product(name: "LicenseList", package: "LicenseList"),
             ]

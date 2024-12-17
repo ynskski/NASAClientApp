@@ -1,5 +1,6 @@
 import APIClient
 import APIClientLive
+import APIKeyClient
 import ComposableArchitecture
 import Models
 
@@ -22,20 +23,28 @@ public struct APIKeySetting {
     }
 
     public enum Action: Equatable {
+        case onAppear
         case setAPIKeyInput(String)
         case updateButtonTapped
     }
+    
+    @Dependency(\.apiKeyClient) private var apiKeyClient
 
     public init() {}
 
     public func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
+        case .onAppear:
+            state.apiKeyInput = apiKeyClient.getKey() ?? .init(rawValue: "")
+            return .none
+
         case let .setAPIKeyInput(input):
             state.apiKeyInput = .init(rawValue: input)
             return .none
 
         case .updateButtonTapped:
-            // TODO: Persist API key
+            apiKeyClient.setKey(state.apiKeyInput)
+            // TODO: remove this logic
             APIClient.setAPIKey(state.apiKeyInput)
             return .none
         }
