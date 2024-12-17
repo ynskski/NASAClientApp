@@ -27,7 +27,7 @@ public struct APIKeySetting {
         case setAPIKeyInput(String)
         case updateButtonTapped
     }
-    
+
     @Dependency(\.apiKeyClient) private var apiKeyClient
 
     public init() {}

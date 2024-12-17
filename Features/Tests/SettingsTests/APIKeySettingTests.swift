@@ -1,6 +1,7 @@
 import ComposableArchitecture
-@testable import Settings
 import Testing
+
+@testable import Settings
 
 @MainActor
 struct APIKeySettingTests {
@@ -11,12 +12,12 @@ struct APIKeySettingTests {
         ) {
             APIKeySetting()
         }
-        
+
         await store.send(.setAPIKeyInput("test")) {
             $0.apiKeyInput = .init(rawValue: "test")
         }
     }
-    
+
     @Test
     func onAppear() async throws {
         let store = TestStore(
@@ -24,15 +25,15 @@ struct APIKeySettingTests {
         ) {
             APIKeySetting()
         }
-        
+
         store.dependencies.apiKeyClient.getKey = {
             .init(rawValue: "test")
         }
-        
+
         await store.send(.onAppear) {
             $0.apiKeyInput = .init(rawValue: "test")
         }
     }
-    
+
     // TODO: add test case for `updateButtonTapped`
 }

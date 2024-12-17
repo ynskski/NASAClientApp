@@ -26,7 +26,7 @@ public struct Settings {
         case path(StackActionOf<Path>)
         case popToRoot
     }
-    
+
     @Dependency(\.apiKeyClient) private var apiKeyClient
 
     public var body: some ReducerOf<Self> {
