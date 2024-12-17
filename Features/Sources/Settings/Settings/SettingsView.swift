@@ -28,7 +28,7 @@ public struct SettingsView: View {
 
                             Spacer()
 
-                            Text(store.apiKey.rawValue.masked ?? "None")
+                            Text(store.apiKey.masked ?? "None")
                                 .foregroundStyle(Color.secondary)
                         }
                     }
