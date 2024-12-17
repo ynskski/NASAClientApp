@@ -12,11 +12,11 @@ struct SettingsTests {
         ) {
             Settings()
         }
-        
+
         store.dependencies.apiKeyClient.getKey = {
             .init(rawValue: "test")
         }
-        
+
         await store.send(.onAppear) {
             $0.apiKey = .init(rawValue: "test")
         }

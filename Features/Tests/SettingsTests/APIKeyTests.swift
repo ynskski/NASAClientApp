@@ -8,7 +8,7 @@ struct APIKeyTests {
     func masked() {
         var key = APIKey(rawValue: "")
         #expect(key.masked == nil)
-        
+
         key = .init(rawValue: "test")
         #expect(key.masked == "t***")
     }
