@@ -1,3 +1,4 @@
+import APIClientLive
 import AppFeature
 import SwiftUI
 
@@ -7,7 +8,9 @@ struct NASAClientApp: App {
         WindowGroup {
             AppView(
                 store: .init(initialState: .init()) {
-                    AppReducer()
+                    AppReducer().transformDependency(\.self) {
+                        $0.apiClient = .liveValue
+                    }
                 }
             )
         }

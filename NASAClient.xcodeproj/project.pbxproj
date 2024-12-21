@@ -10,6 +10,7 @@
 		021A57BB269C141100A55AC1 /* NASAClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021A57BA269C141100A55AC1 /* NASAClientApp.swift */; };
 		021A57BF269C141200A55AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021A57BE269C141200A55AC1 /* Assets.xcassets */; };
 		021A57C2269C141200A55AC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021A57C1269C141200A55AC1 /* Preview Assets.xcassets */; };
+		023BB80B2D16D240008186B1 /* APIClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = 023BB80A2D16D240008186B1 /* APIClientLive */; };
 		02B730152BE5FE3500DFEB10 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 02B730142BE5FE3500DFEB10 /* AppFeature */; };
 		02DE09342D0DCC570071B411 /* APIKeyClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = 02DE09332D0DCC570071B411 /* APIKeyClientLive */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 			files = (
 				02DE09342D0DCC570071B411 /* APIKeyClientLive in Frameworks */,
 				02B730152BE5FE3500DFEB10 /* AppFeature in Frameworks */,
+				023BB80B2D16D240008186B1 /* APIClientLive in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +127,7 @@
 			packageProductDependencies = (
 				02B730142BE5FE3500DFEB10 /* AppFeature */,
 				02DE09332D0DCC570071B411 /* APIKeyClientLive */,
+				023BB80A2D16D240008186B1 /* APIClientLive */,
 			);
 			productName = NASAClient;
 			productReference = 021A57B7269C141100A55AC1 /* NASAClient.app */;
@@ -515,6 +518,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		023BB80A2D16D240008186B1 /* APIClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = APIClientLive;
+		};
 		02B730142BE5FE3500DFEB10 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;

@@ -1,5 +1,4 @@
 import APIClient
-import APIClientLive
 import APIKeyClient
 import ComposableArchitecture
 import Models
@@ -15,7 +14,7 @@ public struct APIKeySetting {
         }
 
         public init(
-            apiKeyInput: APIKey = APIClient.apiKey ?? .init(rawValue: "")
+            apiKeyInput: APIKey = .init(rawValue: "")
         ) {
             self.apiKeyInput = apiKeyInput
             initialAPIKey = apiKeyInput
@@ -44,8 +43,6 @@ public struct APIKeySetting {
 
         case .updateButtonTapped:
             apiKeyClient.setKey(state.apiKeyInput)
-            // TODO: remove this logic
-            APIClient.setAPIKey(state.apiKeyInput)
             return .none
         }
     }

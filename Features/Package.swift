@@ -59,7 +59,8 @@ let package = Package(
         .target(
             name: "APIClientLive",
             dependencies: [
-                "APIClient"
+                "APIClient",
+                "APIKeyClientLive",
             ]
         ),
         .target(
@@ -101,7 +102,7 @@ let package = Package(
         .target(
             name: "Settings",
             dependencies: [
-                "APIClientLive",
+                "APIClient",
                 "APIKeyClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 .product(name: "LicenseList", package: "LicenseList"),
