@@ -26,7 +26,7 @@ public struct APIKeySetting {
         case onAppear
         case setAPIKeyInput(String)
         case updateButtonTapped
-        
+
         @CasePathable
         public enum Delegate {
             case updated
@@ -41,7 +41,7 @@ public struct APIKeySetting {
         switch action {
         case .delegate:
             return .none
-            
+
         case .onAppear:
             state.apiKeyInput = apiKeyClient.getKey() ?? .init(rawValue: "")
             return .none

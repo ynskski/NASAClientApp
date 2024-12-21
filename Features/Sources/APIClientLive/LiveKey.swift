@@ -7,7 +7,7 @@ import Models
 
 extension APIClient: DependencyKey {
     private static let apiKeyClient = APIKeyClient.liveValue
-    
+
     public static var liveValue: Self {
         .init(
             apod: {
@@ -19,16 +19,16 @@ extension APIClient: DependencyKey {
             }
         )
     }
-    
+
     private static func request(to path: String) async throws -> (Data, URLResponse) {
         let baseURL = URL(string: "https://api.nasa.gov")!
-        
+
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
         urlComponents.path = "/planetary/\(path)"
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: apiKeyClient.getKey()?.rawValue)
         ]
-        
+
         return try await URLSession.shared.data(from: urlComponents.url!)
     }
 }
