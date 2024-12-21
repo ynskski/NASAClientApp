@@ -38,7 +38,8 @@ public struct Settings {
 
             case let .path(action):
                 switch action {
-                case let .element(id: id, action: .apiKeySetting(.updateButtonTapped)):
+                case let .element(id: id, action: .apiKeySetting(.delegate(.updated))):
+                    state.apiKey = apiKeyClient.getKey() ?? .init(rawValue: "")
                     state.path.pop(from: id)
                     return .none
 

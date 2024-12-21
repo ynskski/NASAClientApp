@@ -22,9 +22,15 @@ public struct APIKeySetting {
     }
 
     public enum Action: Equatable {
+        case delegate(Delegate)
         case onAppear
         case setAPIKeyInput(String)
         case updateButtonTapped
+        
+        @CasePathable
+        public enum Delegate {
+            case updated
+        }
     }
 
     @Dependency(\.apiKeyClient) private var apiKeyClient
@@ -33,6 +39,9 @@ public struct APIKeySetting {
 
     public func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
+        case .delegate:
+            return .none
+            
         case .onAppear:
             state.apiKeyInput = apiKeyClient.getKey() ?? .init(rawValue: "")
             return .none
@@ -43,7 +52,7 @@ public struct APIKeySetting {
 
         case .updateButtonTapped:
             apiKeyClient.setKey(state.apiKeyInput)
-            return .none
+            return .send(.delegate(.updated))
         }
     }
 }
