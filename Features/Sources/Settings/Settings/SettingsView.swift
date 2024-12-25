@@ -32,7 +32,7 @@ public struct SettingsView: View {
                                 .foregroundStyle(Color.secondary)
                         }
                     }
-                    
+
                     NavigationLink {
                         AppearanceView()
                     } label: {
