@@ -32,19 +32,7 @@ public struct SettingsView: View {
                                 .foregroundStyle(Color.secondary)
                         }
                     }
-                }
-
-                Section {
-                    NavigationLink {
-                        LanguageView()
-                    } label: {
-                        NavigationLinkLabel(
-                            color: .green,
-                            text: Text("Language"),
-                            icon: Image(systemName: "globe")
-                        )
-                    }
-
+                    
                     NavigationLink {
                         AppearanceView()
                     } label: {

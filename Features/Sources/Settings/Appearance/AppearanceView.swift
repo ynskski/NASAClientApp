@@ -53,7 +53,7 @@ struct AppearanceView: View {
                 }
             ) {
                 HStack {
-                    Text("System")
+                    Text("Automatic")
                         .foregroundStyle(Color.primary)
 
                     Spacer()
