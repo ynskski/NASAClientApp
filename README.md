@@ -12,20 +12,11 @@
 - https://github.com/nasa/apod-api
 
 ## Capture
-![](https://github.com/ski-u/NASAClientApp/assets/37182704/ff5aff04-b225-419d-b7ab-e201f74fef40)
+![](./Screenshot/today-screen.gif)
 
-## Reference
-- [The Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture)
-
-## Environment
-```
-❯ swift --version                                                    
-swift-driver version: 1.115 Apple Swift version 6.0.2 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
-Target: arm64-apple-macosx15.0
-```
-
-```
-❯ xcodebuild -version
-Xcode 16.1
-Build version 16B40
-```
+## Tech stack
+- [cybozu/LicenseList](https://github.com/cybozu/LicenseList)
+- [kishikawakatsumi/KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess)
+- [konomae/swift-local-date](https://github.com/konomae/swift-local-date)
+- [pointfreeco/swift-composable-architecture](https://github.com/pointfreeco/swift-composable-architecture)
+- [swiftlang/swift-format](https://github.com/swiftlang/swift-format)
