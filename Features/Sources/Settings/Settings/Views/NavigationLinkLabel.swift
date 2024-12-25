@@ -7,8 +7,8 @@ struct NavigationLinkLabel: View {
 
     var body: some View {
         HStack {
-            RoundedRectangle(cornerRadius: 8)
-                .frame(width: 30, height: 30)
+            Image(systemName: "square.fill")
+                .font(.largeTitle)
                 .foregroundColor(color)
                 .overlay {
                     icon
