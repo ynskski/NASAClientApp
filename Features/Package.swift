@@ -41,7 +41,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/cybozu/LicenseList.git", exact: "1.1.1"),
+        .package(url: "https://github.com/cybozu/LicenseList.git", exact: "2.0.0"),
         .package(
             url: "https://github.com/pointfreeco/swift-composable-architecture.git",
             from: "1.17.0"
