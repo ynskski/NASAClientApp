@@ -18,11 +18,14 @@ extension APIClient: DependencyKey {
                 urlComponents.path = "/planetary/apod"
                 urlComponents.queryItems = [
                     URLQueryItem(name: "api_key", value: apiKeyClient.getKey()?.rawValue),
-                    URLQueryItem(name: "start_date", value: LocalDate().addingMonths(-1).description),
+                    URLQueryItem(
+                        name: "start_date",
+                        value: LocalDate().addingMonths(-1).description
+                    ),
                 ]
-                
+
                 let (data, _) = try await URLSession.shared.data(from: urlComponents.url!)
-                
+
                 return try JSONDecoder()
                     .decode([AstronomyPicture.Payload].self, from: data)
                     .map(AstronomyPicture.init)
@@ -33,7 +36,7 @@ extension APIClient: DependencyKey {
                 urlComponents.queryItems = [
                     URLQueryItem(name: "api_key", value: apiKeyClient.getKey()?.rawValue)
                 ]
-                
+
                 let (data, _) = try await URLSession.shared.data(from: urlComponents.url!)
 
                 return try AstronomyPicture(
