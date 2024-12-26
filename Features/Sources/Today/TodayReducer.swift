@@ -43,7 +43,7 @@ public struct TodayReducer: Sendable {
                 await send(
                     .response(
                         Result {
-                            try await client.apod()
+                            try await client.fetchTodayPicture()
                         }
                     )
                 )

@@ -10,7 +10,7 @@ extension APIClient: DependencyKey {
 
     public static var liveValue: Self {
         .init(
-            apod: {
+            fetchTodayPicture: {
                 // TODO: use enum for path
                 let (data, _) = try await request(to: "apod")
                 return try AstronomyPicture(

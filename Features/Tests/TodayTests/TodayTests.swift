@@ -18,7 +18,7 @@ struct TodayTests {
         }
 
         let mock = AstronomyPicture.mockImage()
-        store.dependencies.apiClient.apod = { mock }
+        store.dependencies.apiClient.fetchTodayPicture = { mock }
 
         await store.send(.fetch) {
             $0.isLoading = true
@@ -39,7 +39,7 @@ struct TodayTests {
         }
 
         let error = NSError(domain: "test", code: 1)
-        store.dependencies.apiClient.apod = { throw error }
+        store.dependencies.apiClient.fetchTodayPicture = { throw error }
 
         await store.send(.fetch) {
             $0.isLoading = true

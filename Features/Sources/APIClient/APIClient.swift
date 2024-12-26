@@ -4,7 +4,7 @@ import Models
 
 @DependencyClient
 public struct APIClient: Sendable {
-    public var apod: @Sendable () async throws -> AstronomyPicture
+    public var fetchTodayPicture: @Sendable () async throws -> AstronomyPicture
 }
 
 extension APIClient: TestDependencyKey {
