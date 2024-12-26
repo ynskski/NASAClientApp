@@ -64,6 +64,7 @@ let package = Package(
             dependencies: [
                 "APIClient",
                 "APIKeyClientLive",
+                .product(name: "LocalDate", package: "swift-local-date"),
             ]
         ),
         .target(

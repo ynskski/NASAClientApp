@@ -4,6 +4,7 @@ import Models
 
 @DependencyClient
 public struct APIClient: Sendable {
+    public var fetchAstronomyPictures: @Sendable () async throws -> [AstronomyPicture]
     public var fetchTodayPicture: @Sendable () async throws -> AstronomyPicture
 }
 
