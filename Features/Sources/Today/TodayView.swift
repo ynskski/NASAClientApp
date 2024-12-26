@@ -5,29 +5,27 @@ import SwiftUI
 
 public struct TodayView: View {
     let store: StoreOf<TodayReducer>
-    @ObservedObject private var viewStore: ViewStoreOf<TodayReducer>
 
     @State private var isPresentedFullScreenImage = false
 
     public init(store: StoreOf<TodayReducer>) {
         self.store = store
-        viewStore = .init(store, observe: { $0 })
     }
 
     public var body: some View {
         List {
-            if let error = viewStore.error {
+            if let error = store.error {
                 errorRetryView(error: error)
             } else {
                 content
             }
         }
         .refreshable {
-            viewStore.send(.fetch)
+            store.send(.fetch)
         }
         .onAppear {
-            if viewStore.picture == nil, !viewStore.isLoading {
-                viewStore.send(.fetch)
+            if store.picture == nil, !store.isLoading {
+                store.send(.fetch)
             }
         }
         .navigationTitle("Today")
@@ -37,7 +35,7 @@ public struct TodayView: View {
     private var content: some View {
         Section(
             header: Group {
-                if let picture = viewStore.picture {
+                if let picture = store.picture {
                     switch picture.mediaType {
                     case .image:
                         AsyncImage(url: picture.url) { phase in
@@ -81,7 +79,7 @@ public struct TodayView: View {
                     case .unknown:
                         Text("Unexpected error occurred.")
                     }
-                } else if let error = viewStore.error {
+                } else if let error = store.error {
                     errorRetryView(error: error)
                 } else {
                     ProgressView()
@@ -94,27 +92,27 @@ public struct TodayView: View {
         Section(
             header: Text("Title")
                 .textCase(nil)
-                .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                .redacted(reason: store.isLoading ? .placeholder : [])
         ) {
-            Text(viewStore.picture?.title ?? titlePlaceHolder)
+            Text(store.picture?.title ?? titlePlaceHolder)
                 .font(.body.bold())
-                .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                .redacted(reason: store.isLoading ? .placeholder : [])
         }
 
         Section(
             header: Text("Explanation")
                 .textCase(nil)
-                .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                .redacted(reason: store.isLoading ? .placeholder : [])
         ) {
-            Text(viewStore.picture?.explanation ?? explanationPlaceHolder)
-                .redacted(reason: viewStore.isLoading ? .placeholder : [])
+            Text(store.picture?.explanation ?? explanationPlaceHolder)
+                .redacted(reason: store.isLoading ? .placeholder : [])
         }
 
-        if let copyright = viewStore.picture?.copyright {
+        if let copyright = store.picture?.copyright {
             Section(
                 header: Text("copyright: \(copyright)")
                     .textCase(nil)
-                    .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                    .redacted(reason: store.isLoading ? .placeholder : [])
             ) {}
         }
     }
@@ -132,7 +130,7 @@ public struct TodayView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.gray)
                 
-                Button("Retry", action: { viewStore.send(.fetch) })
+                Button("Retry", action: { store.send(.fetch) })
                     .font(.callout)
             }
             .textCase(nil)

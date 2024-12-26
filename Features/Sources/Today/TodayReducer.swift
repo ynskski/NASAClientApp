@@ -5,6 +5,7 @@ import Models
 
 @Reducer
 public struct TodayReducer: Sendable {
+    @ObservableState
     public struct State: Equatable {
         var error: TextState?
         var isLoading = false
