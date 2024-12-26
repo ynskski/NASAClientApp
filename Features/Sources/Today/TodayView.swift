@@ -129,7 +129,7 @@ public struct TodayView: View {
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.gray)
-                
+
                 Button("Retry", action: { store.send(.fetch) })
                     .font(.callout)
             }
