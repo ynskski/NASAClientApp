@@ -122,26 +122,20 @@ public struct TodayView: View {
     @ViewBuilder
     private func errorRetryView(error: TextState) -> some View {
         Section(
-            header: VStack {
-                Image(systemName: "xmark.octagon")
-                    .imageScale(.large)
-
-                HStack {
-                    Text("An Error occured")
-                        .foregroundColor(.gray)
-
-                    Button(action: { viewStore.send(.fetch) }) {
-                        Image(systemName: "arrow.clockwise")
-                    }
-                    .padding(.horizontal)
-                }
-                .padding()
+            header: VStack(spacing: 8) {
+                Text("⛔")
+                    .font(.largeTitle)
+                    .padding()
 
                 Text(error)
-                    .font(.caption)
+                    .font(.body)
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.gray)
-                    .textCase(nil)
+                
+                Button("Retry", action: { viewStore.send(.fetch) })
+                    .font(.callout)
             }
+            .textCase(nil)
             .frame(maxWidth: .infinity)
             .padding()
         ) {}
@@ -209,24 +203,40 @@ public struct TodayView: View {
 }
 
 #Preview("Other") {
-    TodayView(
-        store: .init(
-            initialState: TodayReducer.State(
-                error: nil,
-                isLoading: false,
-                picture: .init(
-                    copyright: "\nSpaceX\n",
-                    date: LocalDate(year: 2024, month: 10, day: 23),
-                    explanation:
-                        "Mechazilla has caught the Super Heavy booster! pic.twitter.com/6R5YatSVJX",
-                    hdURL: nil,
-                    mediaType: .other,
-                    title: "Caught",
-                    url: nil
+    NavigationView {
+        TodayView(
+            store: .init(
+                initialState: TodayReducer.State(
+                    error: nil,
+                    isLoading: false,
+                    picture: .init(
+                        copyright: "\nSpaceX\n",
+                        date: LocalDate(year: 2024, month: 10, day: 23),
+                        explanation:
+                            "Mechazilla has caught the Super Heavy booster! pic.twitter.com/6R5YatSVJX",
+                        hdURL: nil,
+                        mediaType: .other,
+                        title: "Caught",
+                        url: nil
+                    )
                 )
-            )
-        ) {
-            EmptyReducer()
-        }
-    )
+            ) {
+                EmptyReducer()
+            }
+        )
+    }
+}
+
+#Preview("Error") {
+    NavigationView {
+        TodayView(
+            store: .init(
+                initialState: TodayReducer.State(
+                    error: .init("Something wrong happened")
+                )
+            ) {
+                EmptyReducer()
+            }
+        )
+    }
 }
