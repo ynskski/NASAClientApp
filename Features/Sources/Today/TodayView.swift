@@ -138,22 +138,11 @@ public struct TodayView: View {
     @ViewBuilder
     private func errorRetryView(error: TextState) -> some View {
         Section(
-            header: VStack(spacing: 8) {
-                Text("⛔")
-                    .font(.largeTitle)
-                    .padding()
-
-                Text(error)
-                    .font(.body)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.gray)
-
-                Button("Retry", action: { store.send(.fetch) })
-                    .font(.callout)
-            }
+            header: ErrorRetryView(
+                error: error,
+                retry: { store.send(.fetch) }
+            )
             .textCase(nil)
-            .frame(maxWidth: .infinity)
-            .padding()
         ) {}
     }
 
