@@ -3,7 +3,7 @@ import LocalDate
 
 public struct AstronomyPicture: Equatable, Sendable {
     public var copyright: String?
-    public var date: LocalDate?
+    public var date: LocalDate
     public var explanation: String
     public var hdURL: URL?
     public var mediaType: MediaType
@@ -12,7 +12,7 @@ public struct AstronomyPicture: Equatable, Sendable {
 
     public init(
         copyright: String? = nil,
-        date: LocalDate? = nil,
+        date: LocalDate,
         explanation: String,
         hdURL: URL? = nil,
         mediaType: MediaType,
@@ -31,7 +31,7 @@ public struct AstronomyPicture: Equatable, Sendable {
     public init(payload: Payload) {
         self.init(
             copyright: payload.copyright,
-            date: try? LocalDate(from: payload.date),
+            date: try! LocalDate(from: payload.date),
             explanation: payload.explanation,
             hdURL: payload.hdURL.map { URL(string: $0)! },
             mediaType: MediaType(string: payload.mediaType),
