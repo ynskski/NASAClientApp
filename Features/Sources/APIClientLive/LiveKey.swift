@@ -29,6 +29,7 @@ extension APIClient: DependencyKey {
                 return try JSONDecoder()
                     .decode([AstronomyPicture.Payload].self, from: data)
                     .map(AstronomyPicture.init)
+                    .reversed()
             },
             fetchTodayPicture: {
                 var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
