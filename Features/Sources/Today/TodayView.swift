@@ -4,7 +4,7 @@ import Models
 import SwiftUI
 
 public struct TodayView: View {
-    let store: StoreOf<TodayReducer>
+    @Bindable var store: StoreOf<TodayReducer>
 
     @State private var isPresentedFullScreenImage = false
 
@@ -13,22 +13,40 @@ public struct TodayView: View {
     }
 
     public var body: some View {
-        List {
-            if let error = store.error {
-                errorRetryView(error: error)
-            } else {
-                content
+        NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
+            List {
+                if let error = store.error {
+                    errorRetryView(error: error)
+                } else {
+                    content
+                }
             }
-        }
-        .refreshable {
-            store.send(.fetch)
-        }
-        .onAppear {
-            if store.picture == nil, !store.isLoading {
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(
+                        state: TodayReducer.Path.State.astronomyPictureList(
+                            AstronomyPictureList.State()
+                        )
+                    ) {
+                        Image(systemName: "list.bullet")
+                    }
+                }
+            }
+            .refreshable {
                 store.send(.fetch)
             }
+            .onAppear {
+                if store.picture == nil, !store.isLoading {
+                    store.send(.fetch)
+                }
+            }
+            .navigationTitle("Today")
+        } destination: { store in
+            switch store.case {
+            case let .astronomyPictureList(store):
+                AstronomyPictureListView(store: store)
+            }
         }
-        .navigationTitle("Today")
     }
 
     @ViewBuilder
