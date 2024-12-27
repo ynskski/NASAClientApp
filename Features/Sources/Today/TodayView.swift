@@ -28,7 +28,7 @@ public struct TodayView: View {
                             AstronomyPictureList.State()
                         )
                     ) {
-                        Image(systemName: "list.bullet")
+                        Image(systemName: "calendar")
                     }
                 }
             }
