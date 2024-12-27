@@ -4,7 +4,7 @@ import SwiftUI
 
 struct AstronomyPictureListView: View {
     let store: StoreOf<AstronomyPictureList>
-    
+
     var body: some View {
         List {
             if let error = store.error {
@@ -19,7 +19,7 @@ struct AstronomyPictureListView: View {
         .navigationTitle(.init("Astronomy Pictures"))
         .navigationBarTitleDisplayMode(.inline)
     }
-    
+
     @ViewBuilder
     private var content: some View {
         ForEach(
@@ -35,7 +35,7 @@ struct AstronomyPictureListView: View {
         }
         .redacted(reason: store.isLoading ? .placeholder : [])
     }
-    
+
     private func errorRetryView(error: TextState) -> some View {
         Section(
             header: ErrorRetryView(
