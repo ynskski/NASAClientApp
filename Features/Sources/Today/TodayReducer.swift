@@ -9,7 +9,7 @@ public struct TodayReducer: Sendable {
     public enum Path {
         case astronomyPictureList(AstronomyPictureList)
     }
-    
+
     @ObservableState
     public struct State: Equatable {
         var error: TextState?
@@ -41,7 +41,7 @@ public struct TodayReducer: Sendable {
     @Dependency(\.apiClient) private var client
 
     private enum CancelID { case fetch }
-    
+
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
@@ -59,7 +59,7 @@ public struct TodayReducer: Sendable {
                     )
                 }
                 .cancellable(id: CancelID.fetch, cancelInFlight: true)
-                
+
             case .path:
                 return .none
 

@@ -9,7 +9,7 @@ public struct AstronomyPictureList: Sendable {
         var error: TextState?
         var isLoading: Bool
         var pictures: [AstronomyPicture]
-        
+
         public init(
             error: TextState? = nil,
             isLoading: Bool = false,
@@ -20,18 +20,18 @@ public struct AstronomyPictureList: Sendable {
             self.pictures = pictures
         }
     }
-    
+
     public enum Action {
         case fetch
         case response(Result<[AstronomyPicture], any Error>)
     }
-    
+
     public init() {}
-    
+
     @Dependency(\.apiClient) private var client
-    
+
     private enum CancelID { case fetch }
-    
+
     public func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .fetch:
@@ -47,12 +47,12 @@ public struct AstronomyPictureList: Sendable {
                 )
             }
             .cancellable(id: CancelID.fetch, cancelInFlight: true)
-            
+
         case let .response(.success(pictures)):
             state.isLoading = false
             state.pictures = pictures
             return .none
-            
+
         case let .response(.failure(error)):
             state.error = .init(error.localizedDescription)
             state.isLoading = false
