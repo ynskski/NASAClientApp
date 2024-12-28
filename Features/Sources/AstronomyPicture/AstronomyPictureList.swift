@@ -41,7 +41,7 @@ public struct AstronomyPictureList: Sendable {
             if state.isLoaded {
                 return .none
             }
-            
+
             state.error = nil
             state.isLoading = true
             return .run { send in
