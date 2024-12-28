@@ -40,6 +40,7 @@ struct AstronomyPictureListView: View {
                     Text(picture.title)
                 }
             }
+            .disabled(!store.isLoaded)
         }
         .redacted(reason: store.isLoading ? .placeholder : [])
     }
