@@ -26,11 +26,19 @@ struct AstronomyPictureListView: View {
             store.isLoading ? AstronomyPicture.placeholderList : store.pictures,
             id: \.date.description
         ) { picture in
-            VStack(alignment: .leading) {
-                Text(picture.date.description)
-                    .font(.callout)
-                    .foregroundStyle(Color.gray)
-                Text(picture.title)
+            NavigationLink {
+                List {
+                    AstronomyPictureDetailView(picture: picture)
+                }
+                .navigationTitle(.init(picture.date.description))
+                .navigationBarTitleDisplayMode(.inline)
+            } label: {
+                VStack(alignment: .leading) {
+                    Text(picture.date.description)
+                        .font(.callout)
+                        .foregroundStyle(Color.gray)
+                    Text(picture.title)
+                }
             }
         }
         .redacted(reason: store.isLoading ? .placeholder : [])
