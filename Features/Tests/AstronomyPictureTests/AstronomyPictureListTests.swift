@@ -29,7 +29,7 @@ struct AstronomyPictureListTests {
             $0.isLoading = false
             $0.pictures = [.mockImage()]
         }
-        
+
         await store.send(.fetch)
     }
 

@@ -51,7 +51,7 @@ public struct TodayView: View {
             }
         }
     }
-    
+
     private func errorRetryView(error: TextState) -> some View {
         Section(
             header: ErrorRetryView(

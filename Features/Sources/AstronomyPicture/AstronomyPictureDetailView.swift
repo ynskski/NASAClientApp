@@ -4,9 +4,9 @@ import SwiftUI
 
 struct AstronomyPictureDetailView: View {
     let picture: AstronomyPicture
-    
+
     @State private var isPresentedFullScreenImage = false
-    
+
     var body: some View {
         Section(
             header: Group {
@@ -56,7 +56,7 @@ struct AstronomyPictureDetailView: View {
                 }
             }
         ) {}
-        
+
         Section(
             header: Text("Title")
                 .textCase(nil)
