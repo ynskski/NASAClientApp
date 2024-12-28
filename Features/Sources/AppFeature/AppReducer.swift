@@ -1,6 +1,6 @@
+import AstronomyPicture
 import ComposableArchitecture
 import Settings
-import Today
 
 @Reducer
 public struct AppReducer {

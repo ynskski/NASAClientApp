@@ -4,7 +4,7 @@ import Foundation
 import Models
 import Testing
 
-@testable import Today
+@testable import AstronomyPicture
 
 @MainActor
 struct AstronomyPictureListTests {

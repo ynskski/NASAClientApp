@@ -1,8 +1,8 @@
+import AstronomyPicture
 import ComposableArchitecture
 import Models
 import Settings
 import SwiftUI
-import Today
 
 public struct AppView: View {
     var store: StoreOf<AppReducer>

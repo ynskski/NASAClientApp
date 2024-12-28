@@ -28,16 +28,16 @@ let package = Package(
             targets: ["AppFeature"]
         ),
         .library(
+            name: "AstronomyPicture",
+            targets: ["AstronomyPicture"]
+        ),
+        .library(
             name: "Models",
             targets: ["Models"]
         ),
         .library(
             name: "Settings",
             targets: ["Settings"]
-        ),
-        .library(
-            name: "Today",
-            targets: ["Today"]
         ),
     ],
     dependencies: [
@@ -85,13 +85,24 @@ let package = Package(
         .target(
             name: "AppFeature",
             dependencies: [
+                "AstronomyPicture",
                 "Settings",
-                "Today",
             ]
         ),
         .testTarget(
             name: "AppFeatureTests",
             dependencies: ["AppFeature"]
+        ),
+        .target(
+            name: "AstronomyPicture",
+            dependencies: [
+                "APIClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
+        .testTarget(
+            name: "AstronomyPictureTests",
+            dependencies: ["AstronomyPicture"]
         ),
         .target(
             name: "Models",
@@ -115,17 +126,6 @@ let package = Package(
         .testTarget(
             name: "SettingsTests",
             dependencies: ["Settings"]
-        ),
-        .target(
-            name: "Today",
-            dependencies: [
-                "APIClient",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-            ]
-        ),
-        .testTarget(
-            name: "TodayTests",
-            dependencies: ["Today"]
         ),
     ]
 )
