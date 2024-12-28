@@ -11,8 +11,13 @@
 ### [Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html)
 - https://github.com/nasa/apod-api
 
-## Capture
-![](./Screenshot/today-screen.gif)
+## Feature
+
+### See Astronomy Pictures
+
+| Today's picture | History |
+| -- | -- |
+| ![](./Screenshot/astronomy-picture-today.gif) | ![](./Screenshot/astronomy-picture-history.gif) |
 
 ## Tech stack
 - [cybozu/LicenseList](https://github.com/cybozu/LicenseList)
