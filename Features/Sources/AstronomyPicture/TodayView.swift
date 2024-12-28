@@ -14,13 +14,11 @@ public struct TodayView: View {
 
     public var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
-            List {
-                if let error = store.error {
-                    errorRetryView(error: error)
-                } else {
-                    content
-                }
-            }
+            AstronomyPictureDetailView(
+                error: store.error,
+                picture: store.picture,
+                retry: { store.send(.fetch) }
+            )
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(
@@ -47,111 +45,6 @@ public struct TodayView: View {
                 AstronomyPictureListView(store: store)
             }
         }
-    }
-
-    @ViewBuilder
-    private var content: some View {
-        Section(
-            header: Group {
-                if let picture = store.picture {
-                    switch picture.mediaType {
-                    case .image:
-                        AsyncImage(url: picture.url) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                                    .frame(maxWidth: .infinity)
-                            case let .success(image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .onTapGesture {
-                                        isPresentedFullScreenImage = true
-                                    }
-                                    .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
-                                        FullScreenImageView(
-                                            closeButtonTapped: {
-                                                isPresentedFullScreenImage = false
-                                            },
-                                            hdImageURL: picture.hdURL,
-                                            image: image
-                                        )
-                                    }
-                            case let .failure(error):
-                                VStack {
-                                    Text("Failed to open:")
-                                    Link(picture.url!.absoluteString, destination: picture.url!)
-                                    Text(error.localizedDescription)
-                                }
-                                .font(.subheadline)
-                                .frame(maxWidth: .infinity)
-                            @unknown default:
-                                Text("Unexpected error occurred.")
-                            }
-                        }
-                    case .video:
-                        WebView(url: picture.url!)
-                            .aspectRatio(contentMode: .fit)
-                    case .other:
-                        EmptyView()
-                    case .unknown:
-                        Text("Unexpected error occurred.")
-                    }
-                } else if let error = store.error {
-                    errorRetryView(error: error)
-                } else {
-                    ProgressView()
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            .textCase(nil)
-        ) {}
-
-        Section(
-            header: Text("Title")
-                .textCase(nil)
-                .redacted(reason: store.isLoading ? .placeholder : [])
-        ) {
-            Text(store.picture?.title ?? titlePlaceHolder)
-                .font(.body.bold())
-                .redacted(reason: store.isLoading ? .placeholder : [])
-        }
-
-        Section(
-            header: Text("Explanation")
-                .textCase(nil)
-                .redacted(reason: store.isLoading ? .placeholder : [])
-        ) {
-            Text(store.picture?.explanation ?? explanationPlaceHolder)
-                .redacted(reason: store.isLoading ? .placeholder : [])
-        }
-
-        if let copyright = store.picture?.copyright {
-            Section(
-                header: Text("copyright: \(copyright)")
-                    .textCase(nil)
-                    .redacted(reason: store.isLoading ? .placeholder : [])
-            ) {}
-        }
-    }
-
-    @ViewBuilder
-    private func errorRetryView(error: TextState) -> some View {
-        Section(
-            header: ErrorRetryView(
-                error: error,
-                retry: { store.send(.fetch) }
-            )
-            .textCase(nil)
-        ) {}
-    }
-
-    private var titlePlaceHolder: String {
-        "M27: The Dumbbell Nebula"
-    }
-
-    private var explanationPlaceHolder: String {
-        "What will become of our Sun?"
     }
 }
 
