@@ -14,11 +14,16 @@ public struct TodayView: View {
 
     public var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
-            AstronomyPictureDetailView(
-                error: store.error,
-                picture: store.picture,
-                retry: { store.send(.fetch) }
-            )
+            List {
+                if let error = store.error {
+                    errorRetryView(error: error)
+                } else if let picture = store.picture {
+                    AstronomyPictureDetailView(picture: picture)
+                } else {
+                    AstronomyPictureDetailView(picture: .placeholder)
+                        .redacted(reason: .placeholder)
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(
@@ -46,6 +51,25 @@ public struct TodayView: View {
             }
         }
     }
+    
+    private func errorRetryView(error: TextState) -> some View {
+        Section(
+            header: ErrorRetryView(
+                error: error,
+                retry: { store.send(.fetch) }
+            )
+            .textCase(nil)
+        ) {}
+    }
+}
+
+private extension AstronomyPicture {
+    static let placeholder = Self(
+        date: .init(),
+        explanation: "placeholder explanation",
+        mediaType: .image,
+        title: "placeholder title"
+    )
 }
 
 #Preview("Image") {

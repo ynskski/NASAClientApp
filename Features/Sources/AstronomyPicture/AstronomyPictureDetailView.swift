@@ -3,84 +3,56 @@ import Models
 import SwiftUI
 
 struct AstronomyPictureDetailView: View {
-    let error: TextState?
-    let picture: AstronomyPicture?
-    let retry: () -> Void
+    let picture: AstronomyPicture
     
     @State private var isPresentedFullScreenImage = false
     
     var body: some View {
-        List {
-            if let error {
-                errorRetryView(error: error)
-            } else {
-                content
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private func errorRetryView(error: TextState) -> some View {
-        Section(
-            header: ErrorRetryView(
-                error: error,
-                retry: retry
-            )
-            .textCase(nil)
-        ) {}
-    }
-    
-    @ViewBuilder
-    private var content: some View {
         Section(
             header: Group {
-                if let picture {
-                    switch picture.mediaType {
-                    case .image:
-                        AsyncImage(url: picture.url) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                                    .frame(maxWidth: .infinity)
-                            case let .success(image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .onTapGesture {
-                                        isPresentedFullScreenImage = true
-                                    }
-                                    .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
-                                        FullScreenImageView(
-                                            closeButtonTapped: {
-                                                isPresentedFullScreenImage = false
-                                            },
-                                            hdImageURL: picture.hdURL,
-                                            image: image
-                                        )
-                                    }
-                            case let .failure(error):
-                                VStack {
-                                    Text("Failed to open:")
-                                    Link(picture.url!.absoluteString, destination: picture.url!)
-                                    Text(error.localizedDescription)
-                                }
-                                .font(.subheadline)
+                switch picture.mediaType {
+                case .image:
+                    AsyncImage(url: picture.url) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
                                 .frame(maxWidth: .infinity)
-                            @unknown default:
-                                Text("Unexpected error occurred.")
+                        case let .success(image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .onTapGesture {
+                                    isPresentedFullScreenImage = true
+                                }
+                                .fullScreenCover(isPresented: $isPresentedFullScreenImage) {
+                                    FullScreenImageView(
+                                        closeButtonTapped: {
+                                            isPresentedFullScreenImage = false
+                                        },
+                                        hdImageURL: picture.hdURL,
+                                        image: image
+                                    )
+                                }
+                        case let .failure(error):
+                            VStack {
+                                Text("Failed to open:")
+                                Link(picture.url!.absoluteString, destination: picture.url!)
+                                Text(error.localizedDescription)
                             }
+                            .font(.subheadline)
+                            .frame(maxWidth: .infinity)
+                            .textCase(nil)
+                        @unknown default:
+                            Text("Unexpected error occurred.")
                         }
-                    case .video:
-                        WebView(url: picture.url!)
-                            .aspectRatio(contentMode: .fit)
-                    case .other:
-                        EmptyView()
-                    case .unknown:
-                        Text("Unexpected error occurred.")
                     }
-                } else {
-                    ProgressView()
-                        .frame(maxWidth: .infinity)
+                case .video:
+                    WebView(url: picture.url!)
+                        .aspectRatio(contentMode: .fit)
+                case .other:
+                    EmptyView()
+                case .unknown:
+                    Text("Unexpected error occurred.")
                 }
             }
         ) {}
@@ -88,44 +60,30 @@ struct AstronomyPictureDetailView: View {
         Section(
             header: Text("Title")
                 .textCase(nil)
-                .redacted(reason: picture == nil ? .placeholder : [])
         ) {
-            Text(picture?.title ?? titlePlaceHolder)
+            Text(picture.title)
                 .font(.body.bold())
-                .redacted(reason: picture == nil ? .placeholder : [])
         }
 
         Section(
             header: Text("Explanation")
                 .textCase(nil)
-                .redacted(reason: picture == nil ? .placeholder : [])
         ) {
-            Text(picture?.explanation ?? explanationPlaceHolder)
-                .redacted(reason: picture == nil ? .placeholder : [])
+            Text(picture.explanation)
         }
 
-        if let copyright = picture?.copyright {
+        if let copyright = picture.copyright {
             Section(
                 header: Text("copyright: \(copyright)")
                     .textCase(nil)
-                    .redacted(reason: picture == nil ? .placeholder : [])
             ) {}
         }
-    }
-    
-    private var titlePlaceHolder: String {
-        "M27: The Dumbbell Nebula"
-    }
-
-    private var explanationPlaceHolder: String {
-        "What will become of our Sun?"
     }
 }
 
 #Preview("Image") {
     NavigationView {
         AstronomyPictureDetailView(
-            error: nil,
             picture: .init(
                 copyright: "Bray FallsKeith Quattrocchi",
                 date: .init(year: 2012, month: 7, day: 12),
@@ -137,8 +95,7 @@ struct AstronomyPictureDetailView: View {
                 mediaType: .image,
                 title: "M27: The Dumbbell Nebula",
                 url: URL(string: "https://apod.nasa.gov/apod/image/2107/M27_Falls_960.jpg")!
-            ),
-            retry: {}
+            )
         )
     }
 }
@@ -146,7 +103,6 @@ struct AstronomyPictureDetailView: View {
 #Preview("Video") {
     NavigationView {
         AstronomyPictureDetailView(
-            error: nil,
             picture: .init(
                 copyright: nil,
                 date: .init(year: 2012, month: 7, day: 12),
@@ -156,8 +112,7 @@ struct AstronomyPictureDetailView: View {
                 mediaType: .video,
                 title: "GW200115: Simulation of a Black Hole Merging with a Neutron Star",
                 url: URL(string: "https://www.youtube.com/embed/V_Kd4YBNs7c?rel=0")!
-            ),
-            retry: {}
+            )
         )
     }
 }
@@ -165,7 +120,6 @@ struct AstronomyPictureDetailView: View {
 #Preview("Other") {
     NavigationView {
         AstronomyPictureDetailView(
-            error: nil,
             picture: .init(
                 copyright: "\nSpaceX\n",
                 date: .init(year: 2024, month: 10, day: 23),
@@ -175,29 +129,7 @@ struct AstronomyPictureDetailView: View {
                 mediaType: .other,
                 title: "Caught",
                 url: nil
-            ),
-            retry: {}
-
-        )
-    }
-}
-
-#Preview("Loading") {
-    NavigationView {
-        AstronomyPictureDetailView(
-            error: nil,
-            picture: nil,
-            retry: {}
-        )
-    }
-}
-
-#Preview("Error") {
-    NavigationView {
-        AstronomyPictureDetailView(
-            error: .init("Something wrong happened"),
-            picture: nil,
-            retry: {}
+            )
         )
     }
 }
