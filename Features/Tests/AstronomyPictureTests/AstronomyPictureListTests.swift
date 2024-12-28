@@ -25,9 +25,12 @@ struct AstronomyPictureListTests {
         }
 
         await store.receive(\.response.success, [.mockImage()]) {
+            $0.isLoaded = true
             $0.isLoading = false
             $0.pictures = [.mockImage()]
         }
+        
+        await store.send(.fetch)
     }
 
     @Test
