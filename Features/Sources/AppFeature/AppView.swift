@@ -21,7 +21,7 @@ public struct AppView: View {
             .tabItem {
                 VStack {
                     Image(systemName: "moon.stars")
-                    Text("Today")
+                    Text("Pictures")
                 }
             }
 
